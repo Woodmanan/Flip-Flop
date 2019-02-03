@@ -21,7 +21,11 @@ public class WeirdStuff : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Time.time - currentTime > timePerChange)
+        {
+            currentTime = Time.time;
+            doRandomChange();
+        }
     }
 
     //Generate a random number correlated with our change, then use it!
@@ -29,10 +33,22 @@ public class WeirdStuff : MonoBehaviour
     private void doRandomChange()
     {
         //Gets random choice between 0 (inclusive) and x (exclusive)
-        int choice = Random.Range(0, 20);
+        int choice = Random.Range(0, 4);
         if (choice == 0)
         {
-            //Do a thing!
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().setRotation(90);
+        }
+        else if (choice == 1)
+        {
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().setRotation(270);
+        }
+        else if (choice == 2)
+        {
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().setRotation(180);
+        }
+        else if (choice == 3)
+        {
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().setRotation(45);
         }
 
     }

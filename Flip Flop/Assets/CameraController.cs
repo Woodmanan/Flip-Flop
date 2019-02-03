@@ -21,7 +21,6 @@ public class CameraController : MonoBehaviour
         players = GameObject.FindGameObjectsWithTag("Player");
         rotation = 0;
         rotationMod = 0;
-        setRotation(90);
     }
 
     // Update is called once per frame
@@ -60,9 +59,8 @@ public class CameraController : MonoBehaviour
         //Rotation Updating
         if (rotating)
         {
-            print("We are rotating!");
             rotation += rotationMod;
-            if (rotationMod < 0)
+            if (rotationMod > 0)
             {
                 if (rotation > rotationGoal)
                 {
@@ -78,41 +76,80 @@ public class CameraController : MonoBehaviour
                     rotating = false;
                 }
             }
+
+            transform.rotation = Quaternion.Euler(0, 0, rotation);
             
         }
     }
 
     //Set the camera rotating to a new rotation
+    //Just call an angle, and the camera will automatically rotate to it.
+    //Camera will automatically choose the fastest way to achieve it's rotation
+    //Will accept values between [-720, infinity) as valid rotation values, and resulting rotation
+    //will be between [0, 360)
     public void setRotation(int newRotation)
     {
-        /*
         //First, figure out which way is the faster rotation
-
-        print("Initial Rotation: " + rotation + " + Initial new Rotation: " + newRotation);
 
         //Set rotation and newRotation into [0, 359]
         rotation = (rotation + 720) % 360;
         newRotation = (newRotation + 720) % 360;
 
-        print("Modded up: " + rotation + ", " + newRotation);
 
-        int smaller = Mathf.Min();
+        int smaller;
+        int larger;
 
-        //Some weird math that checks to see if rotating up or down gets us there faster
-        int upDist = Mathf.Abs(rotation - newRotation);
-        int downDist = Mathf.Abs(rotation - (newRotation - 360));
-
-
-        //Based upon our previous math, choose which way to modify our 
-        if (upDist >= downDist)
+        if (rotation.CompareTo(newRotation) < 0)
         {
-            rotationMod = 1;
-            rotationGoal = newRotation;
+            smaller = rotation;
+            larger = newRotation;
         }
         else
         {
-            rotationMod = -1;
-            rotationGoal = newRotation - 360;
+            smaller = newRotation;
+            larger = rotation;
+        }
+
+
+        //Some weird math that checks to see if rotating up or down gets us there faster
+        int upDist = Mathf.Abs(larger - smaller);
+        int downDist = Mathf.Abs((larger - 360) - smaller);
+
+
+
+        //Based upon our previous math, choose which way to modify our 
+        if (upDist <= downDist)
+        {
+            //The closest way between the two is without crossing 0
+
+            if (smaller == rotation)
+            {
+                //We need to rotate up!
+                rotationMod = 1;
+                rotationGoal = newRotation;
+            }
+            else
+            {
+                //We need to rotate down!
+                rotationMod = -1;
+                rotationGoal = newRotation;
+            }
+            
+        }
+        else
+        {
+            if (smaller == rotation)
+            {
+                //We need to modify our goal
+                rotationMod = -1;
+                rotationGoal = newRotation;
+                rotation = rotation + 360;
+            }
+            else
+            {
+                rotationMod = 1;
+                rotationGoal = newRotation + 360;
+            }
         }
 
         rotating = true;
@@ -120,7 +157,7 @@ public class CameraController : MonoBehaviour
         print("Rotation has been set.");
         print("Rotating goal is: " + rotationGoal);
         print("RotationMod is: " + rotationMod);
-        */
+        
 
     }
 }
