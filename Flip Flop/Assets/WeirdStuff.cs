@@ -15,7 +15,8 @@ public class WeirdStuff : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentTime = 0;
+        currentTime = Time.time;
+        
     }
 
     // Update is called once per frame
@@ -25,6 +26,8 @@ public class WeirdStuff : MonoBehaviour
         {
             currentTime = Time.time;
             doRandomChange();
+
+            
         }
     }
 
@@ -33,7 +36,7 @@ public class WeirdStuff : MonoBehaviour
     private void doRandomChange()
     {
         //Gets random choice between 0 (inclusive) and x (exclusive)
-        int choice = Random.Range(0, 4);
+        int choice = Random.Range(0, 6);
         if (choice == 0)
         {
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().setRotation(90);
@@ -49,6 +52,15 @@ public class WeirdStuff : MonoBehaviour
         else if (choice == 3)
         {
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().setRotation(45);
+        }
+        else if ((choice == 4) || (choice == 5))
+        {
+            int swapNum = Random.Range(0, GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().getNumSwaps());
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+            {
+                
+                go.GetComponent<PlayerController>().swapByInt(swapNum);
+            }
         }
 
     }

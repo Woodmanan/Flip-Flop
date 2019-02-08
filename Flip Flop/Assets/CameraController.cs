@@ -42,7 +42,7 @@ public class CameraController : MonoBehaviour
         //Updating speed, based upon farthest player position
         if (dist <= 0)
         {
-            speed = .025f;
+            speed = .015f;
         }
         else if (dist < 3)
         {
