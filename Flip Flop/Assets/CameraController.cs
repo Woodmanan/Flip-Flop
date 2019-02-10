@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-
+    //These are the main variables in this thing.
+    //Basespeed determines how fast the camera crawls forward with no extra input
+    //When people speed up, the camera goes to 3xBasespeed and then 6xBasespeeed (which should equal player speed)
+    //If you make a bigger camera and speed up the players, don't forget this!
     [SerializeField]
+    float baseSpeed;
     float speed = .01f;
 
     //The rotation of our camera, along with the change we will increment it by.
@@ -42,15 +46,15 @@ public class CameraController : MonoBehaviour
         //Updating speed, based upon farthest player position
         if (dist <= 0)
         {
-            speed = .015f;
+            speed = baseSpeed;
         }
         else if (dist < 3)
         {
-            speed = .05f;
+            speed = 3 * baseSpeed;
         }
         else if (dist >= 3)
         {
-            speed = .1f;
+            speed = 6 * baseSpeed;
         }
         transform.position += new Vector3(1, 0, 0) * speed;
 
@@ -159,5 +163,10 @@ public class CameraController : MonoBehaviour
         print("RotationMod is: " + rotationMod);
         
 
+    }
+
+    public int getRotation()
+    {
+        return rotation;
     }
 }

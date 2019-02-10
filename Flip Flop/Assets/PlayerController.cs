@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    //This class controls player movement and the like
+    //Setting the playernum initializes the strings that store the input axis names.
+    //We store these as strings, so that way we can easily swap them.
+    //GetSterilizedInput is used so that on controllers we can make the joystics act like buttons if we need to
+
+    //Speed is self explanatory, jumpforce is how much force is applied to the rigidbody to make the jump happen
+    //JumpCooldownTime is how long between jumps before a new force can be applied (Stops flying when touching walls)
+
     [SerializeField]
     private string playerNum;
     [SerializeField]

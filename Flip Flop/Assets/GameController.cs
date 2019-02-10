@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    //This class watches the game to make sure that we end the game when we need to!
+
     GameObject[] players;
     // Start is called before the first frame update
     void Start()
