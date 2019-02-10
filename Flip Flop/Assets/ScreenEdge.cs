@@ -20,7 +20,7 @@ public class ScreenEdge : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<PlayerController>().respawn();
         }
     }
 }

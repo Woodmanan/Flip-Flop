@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     //Speed is self explanatory, jumpforce is how much force is applied to the rigidbody to make the jump happen
     //JumpCooldownTime is how long between jumps before a new force can be applied (Stops flying when touching walls)
 
+    //Lives is how many lives the player has. One is subtracted with each screen edge collision. Start with 3 and lose at 0.   
+    //invincible is a boolean used for respawn. When invincible, player floats in midle of camera and cant interact with level.
+    //When any move key is pressed, or 5 seconds have passed, invincible becomes false.
+
     [SerializeField]
     private string playerNum;
     [SerializeField]
@@ -22,44 +26,67 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float jumpCooldownTime;
 
+    [SerializeField]
+    private int lives;
+    [SerializeField]
+    private bool invincible;
+    [SerializeField]
+    private float invincibleTime;
+
     private bool onGround, jumpCooldown;
 
     private string left, right, jump;
     // Start is called before the first frame update
     void Start()
     {
+        invincibleTime = 5; 
         left = "P" + playerNum + "Left";
         right = "P" + playerNum + "Right";
         jump = "P" + playerNum + "Jump";
+        lives = 3;
         print("ON STARTUP:");
         print("Left is: " + left);
         print("Right is: " + right);
         print("Jump is: " + jump);
+        print("Lives is: " + lives);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 toMove = new Vector3(0, 0, 0);
-        if (getSterilizedInput(left) > 0)
+        //player floats until they move
+        if (invincible)
         {
-            toMove += new Vector3(-1, 0, 0);
+            GetComponent<BoxCollider2D>().enabled = false;
+            transform.position = GameObject.FindGameObjectWithTag("MainCamera").transform.position + new Vector3(0, 3, 10);
+
+            if (getSterilizedInput(left) > 0 || getSterilizedInput(right) > 0)
+            {
+                removeInvincible();
+            }
         }
-        if (getSterilizedInput(right) > 0)
-        {
-            toMove += new Vector3(1, 0, 0);
-        }
+        
+            Vector3 toMove = new Vector3(0, 0, 0);
+            if (getSterilizedInput(left) > 0)
+            {
+                toMove += new Vector3(-1, 0, 0);
+            }
+            if (getSterilizedInput(right) > 0)
+            {
+                toMove += new Vector3(1, 0, 0);
+            }
 
-        transform.position += toMove.normalized * speed;
+            transform.position += toMove.normalized * speed;
 
 
 
-        if (Input.GetAxis(jump) > 0 && onGround && !jumpCooldown)
-        {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
-            jumpCooldown = true;
-            Invoke("removeJumpCooldown", jumpCooldownTime);
-        }
+            if (Input.GetAxis(jump) > 0 && onGround && !jumpCooldown)
+            {
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
+                jumpCooldown = true;
+                Invoke("removeJumpCooldown", jumpCooldownTime);
+            }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -134,5 +161,27 @@ public class PlayerController : MonoBehaviour
         print("Left is: " + left);
         print("Right is: " + right);
         print("Jump is: " + jump);
+    }
+
+    //Called on collision with screen edge. Subrtacts life and respawns player of destroys if out of lives.
+    public void respawn()
+    {
+        lives--;
+        if (lives > 0)
+        {
+            invincible = true;
+            Invoke("removeInvincible", invincibleTime);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void removeInvincible()
+    {
+        invincible = false;
+        GetComponent<BoxCollider2D>().enabled = true;
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
     }
 }
