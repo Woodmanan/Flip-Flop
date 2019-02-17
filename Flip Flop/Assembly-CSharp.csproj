@@ -60,11 +60,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Sample UI\Scripts\ActiveStateToggler.cs" />
+    <Compile Include="Assets\Sample UI\Scripts\ApplicationManager.cs" />
+    <Compile Include="Assets\Sample UI\Scripts\ChangeColor.cs" />
+    <Compile Include="Assets\Sample UI\Scripts\DragMe.cs" />
+    <Compile Include="Assets\Sample UI\Scripts\DragPanel.cs" />
+    <Compile Include="Assets\Sample UI\Scripts\DropMe.cs" />
+    <Compile Include="Assets\Sample UI\Scripts\PanelManager.cs" />
+    <Compile Include="Assets\Sample UI\Scripts\ResizePanel.cs" />
+    <Compile Include="Assets\Sample UI\Scripts\ScrollDetailTexture.cs" />
+    <Compile Include="Assets\Sample UI\Scripts\ShowSliderValue.cs" />
+    <Compile Include="Assets\Sample UI\Scripts\TiltWindow.cs" />
+    <Compile Include="Assets\Script\LoadSceneOnClick.cs" />
+    <Compile Include="Assets\Script\QuiteOnClick.cs" />
+    <Compile Include="Assets\Script\SelectOnInput.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\ScreenEdge.cs" />
     <Compile Include="Assets\Scripts\WeirdStuff.cs" />
+    <None Include="Assets\Sample UI\Fonts\Jupiter\LICENSE.txt" />
+    <None Include="Assets\Sample UI\Materials\UI-Default-No-Alpha.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Woodm/Documents/GitHub/Flip Flop/Flip-Flop-Master/Flip Flop/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
