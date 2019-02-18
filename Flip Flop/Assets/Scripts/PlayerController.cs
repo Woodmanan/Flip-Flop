@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private float jumpForce;
     [SerializeField]
     private float jumpCooldownTime;
+    private Rigidbody2D rigid;
 
     [SerializeField]
     private int lives;
@@ -53,6 +54,7 @@ public class PlayerController : MonoBehaviour
         print("Lives is: " + lives);
 
         UISlot.text = "P" + playerNum + " lives: " + lives;
+        rigid = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -70,17 +72,37 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-            Vector3 toMove = new Vector3(0, 0, 0);
-            if (getSterilizedInput(left) > 0)
-            {
-                toMove += new Vector3(-1, 0, 0);
-            }
-            if (getSterilizedInput(right) > 0)
-            {
-                toMove += new Vector3(1, 0, 0);
-            }
+        Vector3 toMove = new Vector3(0, 0, 0);
+        if (getSterilizedInput(left) > 0)
+        {
+            toMove += new Vector3(-1, 0, 0);
+        }
+        if (getSterilizedInput(right) > 0)
+        {
+            toMove += new Vector3(1, 0, 0);
+        }
 
-            transform.position += toMove.normalized * speed;
+        //Non-rigidbody based code (OUTDATED!)
+        transform.position += toMove.normalized * speed;
+
+        /* Evil Rigidbody code
+        if (Mathf.Abs(rigid.velocity.x) > 7)
+        {
+            rigid.AddForce(toMove.normalized * speed * 50);
+        }
+        else
+        {
+            rigid.AddForce(toMove.normalized * speed * 400);
+        }
+        
+        if (Mathf.Abs(rigid.velocity.x) > 10)
+        {
+            rigid.velocity = new Vector2(rigid.velocity.x / Mathf.Abs(rigid.velocity.x) * 5, rigid.velocity.y);
+        }
+        */
+        
+
+            
 
 
 
