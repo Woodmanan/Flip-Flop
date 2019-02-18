@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
         GameObject winner = null;
         foreach (GameObject go in players)
         {
-            if (go != null)
+            if (go != null && go.activeSelf == true)
             {
                 count++;
                 winner = go;

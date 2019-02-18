@@ -208,4 +208,9 @@ public class PlayerController : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = true;
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
     }
+
+    public int getPlayerNum()
+    {
+        return int.Parse(playerNum);
+    }
 }
