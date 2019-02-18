@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\WeirdStuff.cs" />
     <Compile Include="Assets\StartupScript.cs" />
     <None Include="Assets\Sample UI\Fonts\Jupiter\LICENSE.txt" />
+    <None Include="Assets\Sample UI\Textures and Sprites\SF UI\Background\LICENSE.txt" />
     <None Include="Assets\Sample UI\Materials\UI-Default-No-Alpha.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Woodm/Documents/GitHub/Flip Flop/Flip-Flop-Master/Flip Flop/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

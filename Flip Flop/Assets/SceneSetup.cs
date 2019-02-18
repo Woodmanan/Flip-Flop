@@ -27,7 +27,10 @@ public class SceneSetup : MonoBehaviour
     {
         if (Input.GetAxis("P1Start") > 0 || Input.GetAxis("P2Start") > 0 || Input.GetAxis("P3Start") > 0 || Input.GetAxis("P4Start") > 0)
         {
-            moveToNew();
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                moveToNew();
+            }
         }
     }
 

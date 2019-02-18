@@ -587,7 +587,7 @@ GameObject:
   - component: {fileID: 1217171408}
   - component: {fileID: 1217171407}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Setup Object
   m_TagString: MainManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ab3c498e1cb254eaf6e245151461be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamesToWin: 2
+  gamesToWin: 3
 --- !u!4 &1217171408
 Transform:
   m_ObjectHideFlags: 0
