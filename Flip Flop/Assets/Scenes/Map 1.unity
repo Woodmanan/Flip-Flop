@@ -783,8 +783,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8981ff026e74a428e4856c003ae0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timePerChange: 15
+  timePerChange: 5
   updateField: {fileID: 1899673771}
+  bounceMaterial: {fileID: 6200000, guid: 70d685bfbe927914e8c6f4c945e07ca2, type: 2}
 --- !u!1 &377141101
 GameObject:
   m_ObjectHideFlags: 0

@@ -920,6 +920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timePerChange: 15
   updateField: {fileID: 1028835074}
+  bounceMaterial: {fileID: 6200000, guid: 70d685bfbe927914e8c6f4c945e07ca2, type: 2}
 --- !u!114 &1002830554
 MonoBehaviour:
   m_ObjectHideFlags: 0

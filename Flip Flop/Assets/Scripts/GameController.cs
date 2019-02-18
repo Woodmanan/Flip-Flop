@@ -29,18 +29,19 @@ public class GameController : MonoBehaviour
         }
         if (count == 1)
         {
+            GameObject control = GameObject.FindGameObjectWithTag("MainManager");
             print(winner.name + " wins!");
-            Invoke("toNext", 2.5f);
+            control.GetComponent<SceneSetup>().setWinner(winner.GetComponent<PlayerController>().getPlayerNum());
+            Destroy(this.gameObject);
         }
         else if (count == 0)
         {
+            GameObject control = GameObject.FindGameObjectWithTag("MainManager");
             print("No one wins!");
-            Invoke("toNext", 1.5f);
+            control.GetComponent<SceneSetup>().setWinner(0);
+            Destroy(this.gameObject);
         }
     }
 
-    private void toNext()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    
 }

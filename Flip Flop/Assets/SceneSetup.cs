@@ -6,17 +6,19 @@ using UnityEngine.SceneManagement;
 public class SceneSetup : MonoBehaviour
 {
     private bool[] playersOn;
+    private int[] score;
+
+    [SerializeField]
+    private int gamesToWin;
     // Start is called before the first frame update
     void Start()
     {
         GameObject.DontDestroyOnLoad(this.gameObject);
         playersOn = new bool[4];
-        foreach (GameObject go in GameObject.FindGameObjectsWithTag("MainManager"))
+        score = new int[4];
+        if (GameObject.FindGameObjectsWithTag("MainManager").Length != 1)
         {
-            if (!this.gameObject.Equals(go))
-            {
-                Destroy(go);
-            }
+            Destroy(this.gameObject);
         }
     }
 
@@ -52,10 +54,27 @@ public class SceneSetup : MonoBehaviour
         }
     }
 
+    public void setWinner(int player)
+    {
+        if (player != 0)
+        {
+            player--;
+            score[player]++;
+            if (score[player] == gamesToWin)
+            {
+                print((player++) + " wins!");
+                SceneManager.LoadScene(1);
+            }
+        }
+        Invoke("moveToNew", 3.0f);
+    }
+
     public void moveToNew()
     {
         int maxScene = 4;
         maxScene++;
         SceneManager.LoadScene(Random.Range(2, maxScene));
     }
+
+
 }

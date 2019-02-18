@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Tilemaps;
 
 public class WeirdStuff : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class WeirdStuff : MonoBehaviour
     Text updateField;
     private bool dispChange;
     private string changeText;
+
+    //Some specific weird stuff vars
+    [SerializeField]
+    PhysicsMaterial2D bounceMaterial;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +58,7 @@ public class WeirdStuff : MonoBehaviour
         dispChange = true;
         Invoke("returnToTimer", 4.0f);
         //Gets random choice between 0 (inclusive) and x (exclusive)
-        int choice = Random.Range(0, 6);
+        int choice = Random.Range(0, 7);
         if (choice == 0)
         {
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().setRotation(90);
@@ -81,6 +86,13 @@ public class WeirdStuff : MonoBehaviour
             {
                 changeText = go.GetComponent<PlayerController>().swapByInt(swapNum);
             }
+        }
+        else if (choice == 6)
+        {
+            //Bouncy stuff!
+            GameObject tiles = GameObject.FindGameObjectWithTag("Ground");
+            tiles.GetComponent<TilemapCollider2D>().sharedMaterial = bounceMaterial;
+            changeText = "Rubber tiles! All obstacles are now bouncy";
         }
 
     }
