@@ -52,6 +52,7 @@ public class SceneSetup : MonoBehaviour
             if (!playersOn[go.GetComponent<PlayerController>().getPlayerNum() - 1])
             {
                 //Player is off!
+                go.GetComponent<PlayerController>().getUISlot().SetActive(false);
                 go.SetActive(false);
             }
         }

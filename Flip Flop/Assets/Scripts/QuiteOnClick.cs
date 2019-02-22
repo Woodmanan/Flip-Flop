@@ -5,8 +5,8 @@ using UnityEngine;
 public class QuiteOnClick : MonoBehaviour
 {
    public void Quite()
-    {   
-        UnityEditor.EditorApplication.isPlaying = false;
-
+    {
+        //UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
     }
 }

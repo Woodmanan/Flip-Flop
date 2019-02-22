@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
 
         //Non-rigidbody based code (OUTDATED!)
         transform.position += toMove.normalized * speed;
-
+        //rigid.MovePosition(transform.position + toMove.normalized * speed);
         /* Evil Rigidbody code
         if (Mathf.Abs(rigid.velocity.x) > 7)
         {
@@ -234,5 +234,10 @@ public class PlayerController : MonoBehaviour
     public int getPlayerNum()
     {
         return int.Parse(playerNum);
+    }
+
+    public GameObject getUISlot()
+    {
+        return UISlot.transform.parent.gameObject;
     }
 }
