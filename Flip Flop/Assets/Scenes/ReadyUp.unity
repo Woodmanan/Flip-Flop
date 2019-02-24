@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ab3c498e1cb254eaf6e245151461be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamesToWin: 3
+  gamesToWin: 10
 --- !u!4 &1217171408
 Transform:
   m_ObjectHideFlags: 0

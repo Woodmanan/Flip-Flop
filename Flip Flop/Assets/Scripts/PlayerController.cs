@@ -83,8 +83,8 @@ public class PlayerController : MonoBehaviour
         }
 
         //Non-rigidbody based code (OUTDATED!)
-        transform.position += toMove.normalized * speed;
-        //rigid.MovePosition(transform.position + toMove.normalized * speed);
+        //transform.position += toMove.normalized * speed;
+        rigid.velocity = new Vector2(toMove.x * speed * 50, rigid.velocity.y);
         /* Evil Rigidbody code
         if (Mathf.Abs(rigid.velocity.x) > 7)
         {

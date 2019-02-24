@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\ReadyUpController.cs" />
     <Compile Include="Assets\Scripts\ScreenEdge.cs" />
     <Compile Include="Assets\Scripts\SelectOnInput.cs" />
+    <Compile Include="Assets\Scripts\TriggerEndScene.cs" />
     <Compile Include="Assets\Scripts\WeirdStuff.cs" />
     <Compile Include="Assets\StartupScript.cs" />
     <None Include="Assets\Sample UI\Fonts\Jupiter\LICENSE.txt" />
