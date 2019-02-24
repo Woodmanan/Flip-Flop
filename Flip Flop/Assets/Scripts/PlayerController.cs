@@ -63,7 +63,8 @@ public class PlayerController : MonoBehaviour
         //player floats until they move
         if (invincible)
         {
-            GetComponent<BoxCollider2D>().enabled = false;
+            //Box collider Below?
+            GetComponent<CircleCollider2D>().enabled = false;
             transform.position = GameObject.FindGameObjectWithTag("MainCamera").transform.position + new Vector3(0, 3, 10);
 
             if (getSterilizedInput(left) > 0 || getSterilizedInput(right) > 0)
@@ -227,7 +228,7 @@ public class PlayerController : MonoBehaviour
     private void removeInvincible()
     {
         invincible = false;
-        GetComponent<BoxCollider2D>().enabled = true;
+        GetComponent<CircleCollider2D>().enabled = true;
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
     }
 

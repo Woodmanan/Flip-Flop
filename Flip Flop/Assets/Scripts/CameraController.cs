@@ -25,13 +25,15 @@ public class CameraController : MonoBehaviour
         players = GameObject.FindGameObjectsWithTag("Player");
         rotation = 0;
         rotationMod = 0;
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //Speed Modification
-        float dist = 0;
+        float dist = -5;
+        GameObject first = null;
         foreach (GameObject go in players)
         {
             if (go != null)
@@ -39,23 +41,32 @@ public class CameraController : MonoBehaviour
                 if (go.transform.position.x - transform.position.x > dist)
                 {
                     dist = go.transform.position.x - transform.position.x;
+                    first = go;
                 }
             }
         }
 
+        speed = baseSpeed / 6;
+
         //Updating speed, based upon farthest player position
-        if (dist <= 0)
+        print("Dist is " + dist);
+        if (dist < 0)
         {
-            speed = baseSpeed;
+            print("Smol");
+            speed = baseSpeed / 6;
         }
         else if (dist < 3)
         {
-            speed = 3 * baseSpeed;
+            print("Med");
+            speed = baseSpeed / 2;
         }
         else if (dist >= 3)
         {
-            speed = 6 * baseSpeed;
+            print("Fas");
+            speed = baseSpeed;
         }
+        
+        
         transform.position += new Vector3(1, 0, 0) * speed * Time.deltaTime;
 
 
