@@ -14,8 +14,7 @@ public class TriggerEndScene : MonoBehaviour
         //UISlot.transform.parent.gameObject.SetActive(true);
        // UISlot.text = "Game Over!\n"+" Player "+other.GetComponent<PlayerController>().getPlayerNum() + " won!";
         GameObject.FindGameObjectWithTag("MainManager").GetComponent<SceneSetup>().setWinner(other.GetComponent<PlayerController>().getPlayerNum());
-        GetComponent<BoxCollider2D>().enabled = false;
-        Time.timeScale = 0;
+        GetComponent<BoxCollider2D>().enabled = false;       
     }
 
     private void restartGame()

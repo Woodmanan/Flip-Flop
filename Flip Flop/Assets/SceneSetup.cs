@@ -67,10 +67,20 @@ public class SceneSetup : MonoBehaviour
             if (score[player] == gamesToWin)
             {
                 print((player++) + " wins!");
-                SceneManager.LoadScene(1);
+                moveToEnd();
             }
         }
+        //Time.timeScale = 0;
         Invoke("moveToNew", 3.0f);
+    }
+
+    public void disableScene()
+    {
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            go.GetComponent<PlayerController>().enabled = false;
+            Destroy(go.GetComponent<Rigidbody2D>());
+        }
     }
 
     public void moveToNew()
@@ -80,5 +90,24 @@ public class SceneSetup : MonoBehaviour
         SceneManager.LoadScene(Random.Range(2, maxScene));
     }
 
+    public void moveToEnd()
+    {
+        int finalScene = 4;
+        SceneManager.LoadScene(finalScene);
+    }
 
+    public int getPlayerScore(int playerNum)
+    {
+        return score[playerNum - 1];
+    }
+
+    public int[] getPlayerScores()
+    {
+        return score;
+    }
+
+    public bool[] getPlayerStates()
+    {
+        return playersOn;
+    }
 }

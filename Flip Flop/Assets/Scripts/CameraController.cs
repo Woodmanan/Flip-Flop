@@ -56,7 +56,7 @@ public class CameraController : MonoBehaviour
         {
             speed = 6 * baseSpeed;
         }
-        transform.position += new Vector3(1, 0, 0) * speed;
+        transform.position += new Vector3(1, 0, 0) * speed * Time.deltaTime;
 
 
 

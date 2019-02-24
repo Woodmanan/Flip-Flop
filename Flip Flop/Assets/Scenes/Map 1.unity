@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 4
-  speed: 0.1
+  speed: 5
   jumpForce: 300
   jumpCooldownTime: 0.5
   lives: 3
@@ -434,7 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 2
-  speed: 0.1
+  speed: 5
   jumpForce: 300
   jumpCooldownTime: 0.5
   lives: 3
@@ -979,7 +979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8a48169638dd404c9b81141168444df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 0.0166
+  baseSpeed: 1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1336,7 +1336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 1
-  speed: 0.1
+  speed: 5
   jumpForce: 300
   jumpCooldownTime: 0.5
   lives: 3
@@ -3977,12 +3977,12 @@ PrefabInstance:
     - target: {fileID: 7726499587597073946, guid: 49bfa806db9a0c649a0a04d9ee277137,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.8
+      value: 176.25
       objectReference: {fileID: 0}
     - target: {fileID: 7726499587597073946, guid: 49bfa806db9a0c649a0a04d9ee277137,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.07
+      value: -1.09
       objectReference: {fileID: 0}
     - target: {fileID: 7726499587597073946, guid: 49bfa806db9a0c649a0a04d9ee277137,
         type: 3}
@@ -4140,7 +4140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 3
-  speed: 0.1
+  speed: 5
   jumpForce: 300
   jumpCooldownTime: 0.5
   lives: 3
