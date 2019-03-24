@@ -36,10 +36,12 @@ public class WeirdStuff : MonoBehaviour
         if (dispChange)
         {
             updateField.text = changeText;
+            updateField.fontSize = 40;
         }
         else
         {
             updateField.text = "Time till next change: " + (int) (timePerChange - (Time.time - currentTime));
+            updateField.fontSize = 30;
         }
 
         if (Time.time - currentTime > timePerChange)
@@ -58,28 +60,32 @@ public class WeirdStuff : MonoBehaviour
         dispChange = true;
         Invoke("returnToTimer", 4.0f);
         //Gets random choice between 0 (inclusive) and x (exclusive)
-        int choice = Random.Range(0, 7);
+        int choice = Random.Range(0, 3);
+        int secondChoice = 0;
         if (choice == 0)
         {
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().setRotation(90);
-            changeText = "Camera rotation moving to " + 90;
+            secondChoice = Random.Range(0, 4);
+            switch (secondChoice)
+            {
+                case 0:
+                    GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().modRotation((Random.Range(0, 2) * -2 + 1) * 45);
+                    changeText = "Rotating by 45 degrees";
+                    break;
+                case 1:
+                    GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().modRotation((Random.Range(0, 2) * -2 + 1) * 90);
+                    changeText = "Rotating by 90 degrees";
+                    break;
+                case 2:
+                    GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().modRotation((Random.Range(0, 2) * -2 + 1) * 135);
+                    changeText = "Rotating by 135 degrees";
+                    break;
+                case 3:
+                    GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().modRotation(180);
+                    changeText = "Rotating by 180 degrees";
+                    break;
+            }
         }
         else if (choice == 1)
-        {
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().setRotation(270);
-            changeText = "Camera rotation moving to " + 270;
-        }
-        else if (choice == 2)
-        {
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().setRotation(180);
-            changeText = "Camera rotation moving to " + 180;
-        }
-        else if (choice == 3)
-        {
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().setRotation(45);
-            changeText = "Camera rotation moving to " + 45;
-        }
-        else if ((choice == 4) || (choice == 5))
         {
             int swapNum = Random.Range(0, GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().getNumSwaps());
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
@@ -87,14 +93,33 @@ public class WeirdStuff : MonoBehaviour
                 changeText = go.GetComponent<PlayerController>().swapByInt(swapNum);
             }
         }
-        else if (choice == 6)
+        else if (choice == 2)
         {
-            //Bouncy stuff!
-            GameObject tiles = GameObject.FindGameObjectWithTag("Ground");
-            tiles.GetComponent<TilemapCollider2D>().sharedMaterial = bounceMaterial;
-            changeText = "Rubber tiles! All obstacles are now bouncy";
+            secondChoice = Random.Range(0, 4);
+            switch (secondChoice)
+            {
+                case 0:
+                    GameObject tiles = GameObject.FindGameObjectWithTag("Ground");
+                    tiles.GetComponent<TilemapCollider2D>().sharedMaterial = bounceMaterial;
+                    changeText = "Rubber tiles! All obstacles are now bouncy";
+                    break;
+                case 1:
+                    foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+                    {
+                        go.GetComponent<PlayerController>().halfGravity();
+                        go.GetComponent<PlayerController>().halfGravity();
+                    }
+                    changeText = "MOOOOOON";
+                    break;
+                case 2:
+                    foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+                    {
+                        go.GetComponent<PlayerController>().doubleGravity();
+                    }
+                    changeText = "Double Gravity!";
+                    break;
+            }
         }
-
     }
 
 

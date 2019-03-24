@@ -241,4 +241,16 @@ public class PlayerController : MonoBehaviour
     {
         return UISlot.transform.parent.gameObject;
     }
+
+    public void halfGravity()
+    {
+        jumpForce = jumpForce * .75f;
+        GetComponent<Rigidbody2D>().gravityScale = GetComponent<Rigidbody2D>().gravityScale / 2;
+    }
+
+    public void doubleGravity()
+    {
+        //jumpForce = jumpForce * 2;
+        GetComponent<Rigidbody2D>().gravityScale = GetComponent<Rigidbody2D>().gravityScale * 2;
+    }
 }

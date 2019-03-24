@@ -180,4 +180,9 @@ public class CameraController : MonoBehaviour
     {
         return rotation;
     }
+
+    public void modRotation(int mod)
+    {
+        setRotation(rotation + mod);
+    }
 }

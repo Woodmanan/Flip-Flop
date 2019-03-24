@@ -85,14 +85,21 @@ public class SceneSetup : MonoBehaviour
 
     public void moveToNew()
     {
-        int maxScene = 2;//4;
+        int maxScene = 4;
         maxScene++;
-        SceneManager.LoadScene(Random.Range(2, maxScene));
+        if (Random.Range(0, 3) == 0)
+        {
+            SceneManager.LoadScene(Random.Range(2, maxScene));
+        }
+        else
+        {
+            SceneManager.LoadScene(5);
+        }
     }
 
     public void moveToEnd()
     {
-        int finalScene = 4;
+        int finalScene = 1;
         SceneManager.LoadScene(finalScene);
     }
 
