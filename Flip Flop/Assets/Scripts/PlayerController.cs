@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     private Text UISlot;
 
     private bool onGround, jumpCooldown;
+    private float deathTime;
 
     private string left, right, jump;
     // Start is called before the first frame update
@@ -54,6 +55,7 @@ public class PlayerController : MonoBehaviour
         print("Lives is: " + lives);
 
         UISlot.text = "P" + playerNum + " lives: " + lives;
+        UISlot.color = GetComponent<SpriteRenderer>().color;
         rigid = GetComponent<Rigidbody2D>();
     }
 
@@ -67,7 +69,17 @@ public class PlayerController : MonoBehaviour
             GetComponent<CircleCollider2D>().enabled = false;
             transform.position = GameObject.FindGameObjectWithTag("MainCamera").transform.position + new Vector3(0, 3, 10);
 
-            if (getSterilizedInput(left) > 0 || getSterilizedInput(right) > 0)
+            if (Time.time - deathTime < 2)
+            {
+                UISlot.text = "Respawning";
+            }
+            else
+            {
+                UISlot.text = "P" + playerNum + " lives: " + lives;
+            }
+
+
+            if ((getSterilizedInput(left) > 0 || getSterilizedInput(right) > 0) && (Time.time - deathTime > 2))
             {
                 removeInvincible();
             }
@@ -116,7 +128,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Ground"))
         {
@@ -124,7 +136,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Ground"))
         {
@@ -187,7 +199,11 @@ public class PlayerController : MonoBehaviour
             case 3:
                 int rotation = Random.Range(1, 3);
                 RotateLeft(rotation);
-                return "Controls rotated left " + rotation + "time(s).";
+                if (rotation == 1)
+                {
+                    return "Controls rotated left";
+                }
+                return "Controls rotated right";
         }
         print("Left is: " + left);
         print("Right is: " + right);
@@ -212,6 +228,7 @@ public class PlayerController : MonoBehaviour
     public void respawn()
     {
         lives--;
+        deathTime = Time.time;
         if (lives > 0)
         {
             invincible = true;
@@ -252,5 +269,11 @@ public class PlayerController : MonoBehaviour
     {
         //jumpForce = jumpForce * 2;
         GetComponent<Rigidbody2D>().gravityScale = GetComponent<Rigidbody2D>().gravityScale * 2;
+    }
+
+    public void setColor(Color c)
+    {
+        GetComponent<SpriteRenderer>().color = c;
+        UISlot.color = c;
     }
 }

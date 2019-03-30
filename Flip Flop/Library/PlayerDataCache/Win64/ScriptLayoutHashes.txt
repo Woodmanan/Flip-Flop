@@ -135,10 +135,11 @@ b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 699582968bf572a4f5f4654f266dca73 Assembly-CSharp.dll:.DropMe
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
-f027e2f8a4bce1cb40e62856c17d38f4 Assembly-CSharp.dll:.ReadyUpController
+eb99a6d575386d527f87dd70b31e785f Assembly-CSharp.dll:.ReadyUpController
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.ShowSliderValue
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.XInputTestCS
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
-d253dab7a1d4c33c7871f1bcaac00c52 Assembly-CSharp.dll:.SceneSetup
+43c65df457de2848c2638ef5c8742d62 Assembly-CSharp.dll:.SceneSetup
 da21c9bd9620d659f57381d3f36ffceb Assembly-CSharp.dll:.CameraController
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -175,6 +176,7 @@ fb6a1ea36b4f6ef5948d283d93760765 UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 5b0391b7e3d9ea9db6c0a8fbd0ca23f6 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSoundfieldExtension
 5b0391b7e3d9ea9db6c0a8fbd0ca23f6 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSourceExtension
 a4f0a4f62100f1a4fb5cbe0e00dde83f Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
+2cddec986e12d822d94bb601a9ba938b Assembly-CSharp.dll:.PlayerControlBeta
 394c360dcad9373402606d21c2eb629e Assembly-CSharp.dll:.SelectOnInput
 5fc094978ce3e3591a7500ed380d854a Unity.Analytics.DataPrivacy.dll:UnityEngine.Analytics.DataPrivacyButton
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
@@ -186,3 +188,4 @@ c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.ApplicationManager
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.ChangeColor
 9b7249d20011b9e374c188282a91996c Assembly-CSharp.dll:.WeirdStuff
+253beab9b38c4b3cccff528b5a9103c3 Assembly-CSharp.dll:.ExitScript

@@ -562,3 +562,4 @@ C:\Users\Woodm\Documents\GitHub\Flip Flop\Flip-Flop-Master\Flip Flop\obj\Debug\A
 C:\Users\Woodm\Documents\GitHub\Flip Flop\Flip-Flop-Master\Flip Flop\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\Woodm\Documents\GitHub\Flip Flop\Flip-Flop-Master\Flip Flop\obj\Debug\Assembly-CSharp.dll
 C:\Users\Woodm\Documents\GitHub\Flip Flop\Flip-Flop-Master\Flip Flop\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Woodm\Documents\GitHub\Flip Flop\Flip-Flop-Master\Flip Flop\Temp\bin\Debug\XInputDotNetPure.dll

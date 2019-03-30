@@ -9,6 +9,9 @@ public class SceneSetup : MonoBehaviour
     private int[] score;
 
     [SerializeField]
+    private int maxScene;
+
+    [SerializeField]
     private int gamesToWin;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +28,7 @@ public class SceneSetup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("P1Start") > 0 || Input.GetAxis("P2Start") > 0 || Input.GetAxis("P3Start") > 0 || Input.GetAxis("P4Start") > 0)
+        if (Input.GetAxis("Start1") > 0 && Input.GetAxis("Start2") > 0)
         {
             if (SceneManager.GetActiveScene().buildIndex == 1)
             {
@@ -85,11 +88,9 @@ public class SceneSetup : MonoBehaviour
 
     public void moveToNew()
     {
-        int maxScene = 4;
-        maxScene++;
-        if (Random.Range(0, 3) == 0)
+        if (Random.Range(1, 3) == 0)
         {
-            SceneManager.LoadScene(Random.Range(2, maxScene));
+            SceneManager.LoadScene(Random.Range(2, maxScene++));
         }
         else
         {

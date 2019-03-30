@@ -19,6 +19,9 @@ public class WeirdStuff : MonoBehaviour
     private bool dispChange;
     private string changeText;
 
+    int nextChange;
+    string nextName;
+
     //Some specific weird stuff vars
     [SerializeField]
     PhysicsMaterial2D bounceMaterial;
@@ -28,6 +31,7 @@ public class WeirdStuff : MonoBehaviour
     {
         currentTime = Time.time;
         changeText = "If you're seeing this, there's a bug.";
+        pickNext();
     }
 
     // Update is called once per frame
@@ -37,11 +41,20 @@ public class WeirdStuff : MonoBehaviour
         {
             updateField.text = changeText;
             updateField.fontSize = 40;
+            if ((int) (2 *Time.time) % 2 == 0)
+            {
+                updateField.color = Color.yellow;
+            }
+            else
+            {
+                updateField.color = Color.red;
+            }
         }
         else
         {
-            updateField.text = "Time till next change: " + (int) (timePerChange - (Time.time - currentTime));
+            updateField.text = nextName + " change in: " + (int) (timePerChange - (Time.time - currentTime));
             updateField.fontSize = 30;
+            updateField.color = Color.yellow;
         }
 
         if (Time.time - currentTime > timePerChange)
@@ -60,7 +73,7 @@ public class WeirdStuff : MonoBehaviour
         dispChange = true;
         Invoke("returnToTimer", 4.0f);
         //Gets random choice between 0 (inclusive) and x (exclusive)
-        int choice = Random.Range(0, 3);
+        int choice = nextChange;
         int secondChoice = 0;
         if (choice == 0)
         {
@@ -95,13 +108,21 @@ public class WeirdStuff : MonoBehaviour
         }
         else if (choice == 2)
         {
-            secondChoice = Random.Range(0, 4);
+            secondChoice = Random.Range(0, 3);
             switch (secondChoice)
             {
                 case 0:
                     GameObject tiles = GameObject.FindGameObjectWithTag("Ground");
                     tiles.GetComponent<TilemapCollider2D>().sharedMaterial = bounceMaterial;
                     changeText = "Rubber tiles! All obstacles are now bouncy";
+                    if (Random.Range(0, 2) == 0)
+                    {
+                        changeText = "Heavy slime! Bouncy tiles + Gravity up";
+                        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+                        {
+                            go.GetComponent<PlayerController>().doubleGravity();
+                        }
+                    }
                     break;
                 case 1:
                     foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
@@ -112,16 +133,59 @@ public class WeirdStuff : MonoBehaviour
                     changeText = "MOOOOOON";
                     break;
                 case 2:
+                    changeText = "Surprise!";
+                    Color[] toSwitch = getRandomColors();
+                    int count = 0;
                     foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
                     {
-                        go.GetComponent<PlayerController>().doubleGravity();
+                        go.GetComponent<PlayerController>().setColor(toSwitch[count]);
+                        count++;
                     }
-                    changeText = "Double Gravity!";
                     break;
             }
         }
+        pickNext();
     }
 
+    void pickNext()
+    {
+        nextChange = Random.Range(0, 3);
+        switch (nextChange)
+        {
+            case 0:
+                nextName = "Camera";
+                break;
+            case 1:
+                nextName = "Controller";
+                break;
+            case 2:
+                nextName = "Physics";
+                break;
+        }
+    }
+
+    Color[] getRandomColors()
+    {
+        Color[] list = new Color[8];
+        list[0] = Color.black;
+        list[1] = Color.white;
+        list[2] = Color.red;
+        list[3] = Color.green;
+        list[4] = Color.blue;
+        list[5] = Color.cyan;
+        list[6] = Color.yellow;
+        list[7] = Color.magenta;
+
+        for (int i = 0; i < list.Length; i++)
+        {
+            Color hold = list[i];
+            int rand = Random.Range(0, list.Length);
+            list[i] = list[rand];
+            list[rand] = hold;
+        }
+
+        return list;
+    }
 
     //Turns off the display option
     private void returnToTimer()

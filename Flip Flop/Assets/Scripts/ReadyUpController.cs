@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using XInputDotNetPure; // Required in C#
 
 public class ReadyUpController : MonoBehaviour {
 
     [SerializeField]
     private string playerNum;
+    [SerializeField] private PlayerIndex ControllerNum;
+    private GamePadState inp;
 
     [SerializeField]
     private bool ready;
@@ -26,7 +29,8 @@ public class ReadyUpController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if(Input.GetAxis(jump) > 0 && !ready && !readyCoolDown)
+        inp = GamePad.GetState(ControllerNum);
+		if(inp.Buttons.Start == ButtonState.Pressed && !ready && !readyCoolDown)
         {
             ready = true;
             Invoke("removeReadyCoolDown", .4f);
@@ -36,7 +40,7 @@ public class ReadyUpController : MonoBehaviour {
             GetComponent<Text>().fontSize = GetComponent<Text>().fontSize * 2;
             GameObject.FindGameObjectWithTag("MainManager").GetComponent<SceneSetup>().setState(int.Parse(playerNum), true);
         }
-        else if (Input.GetAxis(jump) > 0 && ready && !readyCoolDown)
+        else if (inp.Buttons.Start == ButtonState.Pressed && ready && !readyCoolDown)
         {
             ready = false;
             readyCoolDown = true;
