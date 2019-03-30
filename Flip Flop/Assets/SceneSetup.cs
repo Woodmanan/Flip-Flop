@@ -52,10 +52,10 @@ public class SceneSetup : MonoBehaviour
         }
         foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
         {
-            if (!playersOn[go.GetComponent<PlayerController>().getPlayerNum() - 1])
+            if (!playersOn[go.GetComponent<PlayerControlBeta>().getPlayerNum() - 1])
             {
                 //Player is off!
-                go.GetComponent<PlayerController>().getUISlot().SetActive(false);
+                go.GetComponent<PlayerControlBeta>().getUISlot().SetActive(false);
                 go.SetActive(false);
             }
         }
@@ -88,14 +88,7 @@ public class SceneSetup : MonoBehaviour
 
     public void moveToNew()
     {
-        if (Random.Range(1, 3) == 0)
-        {
-            SceneManager.LoadScene(Random.Range(2, maxScene++));
-        }
-        else
-        {
-            SceneManager.LoadScene(5);
-        }
+        SceneManager.LoadScene(5);
     }
 
     public void moveToEnd()

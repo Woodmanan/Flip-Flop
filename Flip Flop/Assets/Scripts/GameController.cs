@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour
         {
             GameObject control = GameObject.FindGameObjectWithTag("MainManager");
             print(winner.name + " wins!");
-            control.GetComponent<SceneSetup>().setWinner(winner.GetComponent<PlayerController>().getPlayerNum());
+            control.GetComponent<SceneSetup>().setWinner(winner.GetComponent<PlayerControlBeta>().getPlayerNum());
             Destroy(this.gameObject);
         }
         else if (count == 0)

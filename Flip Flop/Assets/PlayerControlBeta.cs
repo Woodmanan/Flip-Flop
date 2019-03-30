@@ -19,7 +19,7 @@ public class PlayerControlBeta : MonoBehaviour
     //When any move key is pressed, or 5 seconds have passed, invincible becomes false.
 
     [SerializeField]
-    private int playerNum;
+    private string playerNum;
     [SerializeField] private PlayerIndex ControllerNum;
     private GamePadState inp;
 
@@ -292,7 +292,7 @@ public class PlayerControlBeta : MonoBehaviour
 
     public int getPlayerNum()
     {
-        return playerNum;
+        return int.Parse(playerNum);
     }
 
     public GameObject getUISlot()
