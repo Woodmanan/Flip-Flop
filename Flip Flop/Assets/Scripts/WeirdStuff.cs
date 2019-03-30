@@ -100,10 +100,10 @@ public class WeirdStuff : MonoBehaviour
         }
         else if (choice == 1)
         {
-            int swapNum = Random.Range(0, GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().getNumSwaps());
+            int swapNum = Random.Range(0, GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControlBeta>().getNumSwaps());
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
             {
-                changeText = go.GetComponent<PlayerController>().swapByInt(swapNum);
+                changeText = go.GetComponent<PlayerControlBeta>().swapByInt(swapNum);
             }
         }
         else if (choice == 2)
@@ -120,15 +120,15 @@ public class WeirdStuff : MonoBehaviour
                         changeText = "Heavy slime! Bouncy tiles + Gravity up";
                         foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
                         {
-                            go.GetComponent<PlayerController>().doubleGravity();
+                            go.GetComponent<PlayerControlBeta>().doubleGravity();
                         }
                     }
                     break;
                 case 1:
                     foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
                     {
-                        go.GetComponent<PlayerController>().halfGravity();
-                        go.GetComponent<PlayerController>().halfGravity();
+                        go.GetComponent<PlayerControlBeta>().halfGravity();
+                        go.GetComponent<PlayerControlBeta>().halfGravity();
                     }
                     changeText = "MOOOOOON";
                     break;
@@ -138,7 +138,7 @@ public class WeirdStuff : MonoBehaviour
                     int count = 0;
                     foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
                     {
-                        go.GetComponent<PlayerController>().setColor(toSwitch[count]);
+                        go.GetComponent<PlayerControlBeta>().setColor(toSwitch[count]);
                         count++;
                     }
                     break;
