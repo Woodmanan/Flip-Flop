@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneSetup : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class SceneSetup : MonoBehaviour
 
     [SerializeField]
     private int gamesToWin;
+
+    private GameObject panel;
+    private Text UISlot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +33,7 @@ public class SceneSetup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Start1") > 0 && Input.GetAxis("Start2") > 0)
+        if (Input.GetAxis("Start1") > 0 && Input.GetAxis("Start2") > 0 || Input.GetAxis("Start1") > 0 )
         {
             if (SceneManager.GetActiveScene().buildIndex == 1)
             {
@@ -43,7 +48,7 @@ public class SceneSetup : MonoBehaviour
         playersOn[player - 1] = state;
     }
 
-    public void updatePlayers()
+    public void updatePlayers(GameObject pan, Text UI)
     {
         print("Scene setup is turning the players on / off");
         for (int i = 0; i < 4; i++)
@@ -59,6 +64,8 @@ public class SceneSetup : MonoBehaviour
                 go.SetActive(false);
             }
         }
+        panel = pan;
+        UISlot = UI;
     }
 
     public void setWinner(int player)
@@ -73,8 +80,36 @@ public class SceneSetup : MonoBehaviour
                 moveToEnd();
             }
         }
+        //Sebastian's new code
+
+        panel.SetActive(true);
+
+        player += 1;
+        //show winner num
+        UISlot.text = "Player " + player + " won this round!\n\n";
+
+        /*show rest of players' scores
+        bool[] playerCount = _sceneSetUp.getPlayerStates();
+        int[] playerScores = _sceneSetUp.getPlayerScores();
+        */
+        int players = -1;
+        foreach (bool on in playersOn)
+        {
+            players++;
+            if (on)
+            {
+                /*
+                var pScore = Instantiate(UISlot);
+                pScore.transform.SetParent(levelOverPanel.transform);
+                */
+                UISlot.text += "Player " + (players + 1) + " score: " + score[players] + "\n";
+            }
+        }
+
+
+
         //Time.timeScale = 0;
-        Invoke("moveToNew", 3.0f);
+        Invoke("moveToNew", 5.0f);
     }
 
     public void disableScene()

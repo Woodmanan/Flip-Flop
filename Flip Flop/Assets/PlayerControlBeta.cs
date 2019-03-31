@@ -45,7 +45,7 @@ public class PlayerControlBeta : MonoBehaviour
     private bool onGround, jumpCooldown;
     private float deathTime;
 
-    private string left, right, jump;
+    private char left, right, jump;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,9 +55,9 @@ public class PlayerControlBeta : MonoBehaviour
             print("Controller connected for player" + playerNum +  "!");
         }
 
-        left = "Left";
-        right = "Right";
-        jump = "Jump";
+        left = 'l';
+        right = 'r';
+        jump = 'j';
         print("ON STARTUP:");
         print("Left is: " + left);
         print("Right is: " + right);
@@ -161,9 +161,9 @@ public class PlayerControlBeta : MonoBehaviour
         jumpCooldown = false;
     }
 
-    private float getSterilizedInput(string inputName)
+    private float getSterilizedInput(char inputName)
     {
-        if (inputName == left)
+        if (inputName == 'l')
         {
             if (inp.ThumbSticks.Left.X < 0)
             {
@@ -174,7 +174,7 @@ public class PlayerControlBeta : MonoBehaviour
                 return 0;
             }
         }
-        else if (inputName == right)
+        else if (inputName == 'r')
         {
             if (inp.ThumbSticks.Left.X > 0)
             {
@@ -185,7 +185,7 @@ public class PlayerControlBeta : MonoBehaviour
                 return 0;
             }
         }
-        else if (inputName == jump)
+        else if (inputName == 'j')
         {
             if(inp.Buttons.A == ButtonState.Pressed)
             {
@@ -213,7 +213,7 @@ public class PlayerControlBeta : MonoBehaviour
     public string swapByInt(int choice)
     {
         print(this.gameObject.name + " is being switched with num " + choice);
-        string holder;
+        char holder;
         switch (choice)
         {
             case 0:
@@ -258,7 +258,7 @@ public class PlayerControlBeta : MonoBehaviour
                count + " times");
         for (int i = 0; i < count; i++)
         {
-            string holder = right;
+            char holder = right;
             right = jump;
             jump = left;
             left = holder;

@@ -49,20 +49,16 @@ public class CameraController : MonoBehaviour
         speed = baseSpeed / 6;
 
         //Updating speed, based upon farthest player position
-        print("Dist is " + dist);
         if (dist < 0)
         {
-            print("Smol");
             speed = baseSpeed / 6;
         }
         else if (dist < 3)
         {
-            print("Med");
             speed = baseSpeed / 2;
         }
         else if (dist >= 3)
         {
-            print("Fas");
             speed = baseSpeed;
         }
         
