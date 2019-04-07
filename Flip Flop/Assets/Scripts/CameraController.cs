@@ -36,7 +36,7 @@ public class CameraController : MonoBehaviour
         GameObject first = null;
         foreach (GameObject go in players)
         {
-            if (go != null)
+            if (go != null && !go.GetComponent<PlayerControlBeta>().respawing())
             {
                 if (go.transform.position.x - transform.position.x > dist)
                 {

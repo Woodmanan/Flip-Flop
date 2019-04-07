@@ -25,11 +25,16 @@ public class PlayerControlBeta : MonoBehaviour
 
     [SerializeField]
     private float speed;
+    private float vel;
+    [SerializeField]
+    private float slide;
 
     [SerializeField]
     private float jumpForce;
     [SerializeField]
     private float jumpCooldownTime;
+    private bool jumping;
+
     private Rigidbody2D rigid;
 
     [SerializeField]
@@ -41,6 +46,8 @@ public class PlayerControlBeta : MonoBehaviour
 
     [SerializeField]
     private Text UISlot;
+
+    [SerializeField] private AudioClip[] noises;
 
     private bool onGround, jumpCooldown;
     private float deathTime;
@@ -64,6 +71,9 @@ public class PlayerControlBeta : MonoBehaviour
         print("Jump is: " + jump);
         print("Lives is: " + lives);
         print("Test of string behavior.");
+        vel = 0;
+
+        jumping = false;
 
         UISlot.text = "P" + playerNum + " lives: " + lives;
         UISlot.color = GetComponent<SpriteRenderer>().color;
@@ -83,7 +93,16 @@ public class PlayerControlBeta : MonoBehaviour
         {
             //Box collider Below?
             GetComponent<CircleCollider2D>().enabled = false;
-            transform.position = GameObject.FindGameObjectWithTag("MainCamera").transform.position + new Vector3(0, 3, 10);
+            transform.position = GameObject.FindGameObjectWithTag("MainCamera").transform.position + new Vector3(0, 3, 10) + new Vector3(2.5f - getPlayerNum(), 0, 0);
+
+            if (((int) (Time.time * 4)) % 2 == 0)
+            {
+                GetComponent<SpriteRenderer>().enabled = false;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().enabled = true;
+            }
 
             if (Time.time - deathTime < 2)
             {
@@ -111,25 +130,35 @@ public class PlayerControlBeta : MonoBehaviour
             toMove += new Vector3(1, 0, 0);
         }
 
-        //Non-rigidbody based code (OUTDATED!)
-        //transform.position += toMove.normalized * speed;
+
+        /*
+        Our wonderful moving code. If going left and right no longer works, reimplement this.
         rigid.velocity = new Vector2(toMove.x * speed, rigid.velocity.y);
-        /* Evil Rigidbody code
-        if (Mathf.Abs(rigid.velocity.x) > 7)
+        */
+
+        //New Movement controls
+        float change = (toMove.x * speed / slide);
+
+
+        if (change != 0)
         {
-            rigid.AddForce(toMove.normalized * speed * 50);
+            vel += change;
+            if (vel > speed)
+            {
+                vel = speed;
+            }
+            if (vel < -1 * speed)
+            {
+                vel = -1 * speed;
+            }
+            rigid.velocity = new Vector2(vel, rigid.velocity.y);
         }
         else
         {
-            rigid.AddForce(toMove.normalized * speed * 400);
+            rigid.velocity = new Vector2(rigid.velocity.x * (1 - 1 / slide), rigid.velocity.y);
         }
-        
-        if (Mathf.Abs(rigid.velocity.x) > 10)
-        {
-            rigid.velocity = new Vector2(rigid.velocity.x / Mathf.Abs(rigid.velocity.x) * 5, rigid.velocity.y);
-        }
-        */
 
+        
 
 
 
@@ -137,9 +166,20 @@ public class PlayerControlBeta : MonoBehaviour
 
         if (getSterilizedInput(jump) > 0 && onGround && !jumpCooldown)
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpForce));
+            rigid.AddForce(new Vector2(0, jumpForce));
             jumpCooldown = true;
             Invoke("removeJumpCooldown", jumpCooldownTime);
+            jumping = true;
+            AudioSource aud = GetComponent<AudioSource>();
+            aud.clip = noises[Random.Range(0, noises.Length)];
+            aud.Play();
+        }
+
+        if (getSterilizedInput(jump) == 0 && jumping)
+        {
+            //rigid.velocity = new Vector2(rigid.velocity.x, 0);
+            rigid.AddForce(new Vector2(0, -100));
+            jumping = false;
         }
 
     }
@@ -295,6 +335,7 @@ public class PlayerControlBeta : MonoBehaviour
             UISlot.transform.parent.gameObject.SetActive(false);
             Destroy(this.gameObject);
         }
+        GamePad.SetVibration(ControllerNum, 1, 1);
     }
 
     private void removeInvincible()
@@ -302,6 +343,8 @@ public class PlayerControlBeta : MonoBehaviour
         invincible = false;
         GetComponent<CircleCollider2D>().enabled = true;
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        GamePad.SetVibration(ControllerNum, 0, 0);
+        GetComponent<SpriteRenderer>().enabled = true;
     }
 
     public int getPlayerNum()
@@ -330,5 +373,15 @@ public class PlayerControlBeta : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().color = c;
         UISlot.color = c;
+    }
+
+    public void modSlide(float mod)
+    {
+        slide += mod;
+    }
+
+    public bool respawing()
+    {
+        return invincible;
     }
 }

@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Text UISlot;
 
+
     private bool onGround, jumpCooldown;
     private float deathTime;
 
@@ -276,4 +277,7 @@ public class PlayerController : MonoBehaviour
         GetComponent<SpriteRenderer>().color = c;
         UISlot.color = c;
     }
+
+    
+
 }

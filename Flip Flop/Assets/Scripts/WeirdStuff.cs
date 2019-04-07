@@ -108,7 +108,7 @@ public class WeirdStuff : MonoBehaviour
         }
         else if (choice == 2)
         {
-            secondChoice = Random.Range(0, 3);
+            secondChoice = Random.Range(0, 4);
             switch (secondChoice)
             {
                 case 0:
@@ -140,6 +140,13 @@ public class WeirdStuff : MonoBehaviour
                     {
                         go.GetComponent<PlayerControlBeta>().setColor(toSwitch[count]);
                         count++;
+                    }
+                    break;
+                case 3:
+                    changeText = "Slippery Controls!";
+                    foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+                    {
+                        go.GetComponent<PlayerControlBeta>().modSlide(15);
                     }
                     break;
             }
