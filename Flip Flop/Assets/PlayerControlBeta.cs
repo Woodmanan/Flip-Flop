@@ -96,7 +96,11 @@ public class PlayerControlBeta : MonoBehaviour
             GetComponent<CircleCollider2D>().enabled = false;
             transform.position = GameObject.FindGameObjectWithTag("MainCamera").transform.position + new Vector3(0, 3, 10) + new Vector3(2.5f - getPlayerNum(), 0, 0);
 
-            
+            //Reset the controller vibration after death. This was apparently an issue.
+            if (Time.time - deathTime > .75)
+            {
+                GamePad.SetVibration(ControllerNum, 0, 0);
+            }
 
             if (Time.time - deathTime < 2)
             {
@@ -334,13 +338,15 @@ public class PlayerControlBeta : MonoBehaviour
             Invoke("removeInvincible", invincibleTime);
             UISlot.text = "P" + playerNum + " lives: " + lives;
             GetComponent<SpriteRenderer>().enabled = false;
+            GamePad.SetVibration(ControllerNum, 1, 1);
         }
         else
         {
             UISlot.transform.parent.gameObject.SetActive(false);
+            GamePad.SetVibration(ControllerNum, 0, 0);
             Destroy(this.gameObject);
         }
-        GamePad.SetVibration(ControllerNum, 1, 1);
+        
     }
 
     private void removeInvincible()
