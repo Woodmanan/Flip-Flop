@@ -68,6 +68,10 @@ public class PlayerControlBeta : MonoBehaviour
         UISlot.text = "P" + playerNum + " lives: " + lives;
         UISlot.color = GetComponent<SpriteRenderer>().color;
         rigid = GetComponent<Rigidbody2D>();
+
+#if UNITY_EDITOR
+        print("Editor Controls Enabled");
+#endif
     }
 
     // Update is called once per frame
@@ -163,6 +167,16 @@ public class PlayerControlBeta : MonoBehaviour
 
     private float getSterilizedInput(char inputName)
     {
+#if UNITY_EDITOR
+        if (Input.GetAxis("" + inputName) > 0)
+        {
+            return Input.GetAxis("" + inputName);
+        }
+        else
+        {
+            return 0;
+        }
+#endif
         if (inputName == 'l')
         {
             if (inp.ThumbSticks.Left.X < 0)
