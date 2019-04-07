@@ -48,6 +48,7 @@ public class PlayerControlBeta : MonoBehaviour
     private Text UISlot;
 
     [SerializeField] private AudioClip[] noises;
+    [SerializeField] private AudioClip death;
 
     private bool onGround, jumpCooldown;
     private float deathTime;
@@ -95,14 +96,7 @@ public class PlayerControlBeta : MonoBehaviour
             GetComponent<CircleCollider2D>().enabled = false;
             transform.position = GameObject.FindGameObjectWithTag("MainCamera").transform.position + new Vector3(0, 3, 10) + new Vector3(2.5f - getPlayerNum(), 0, 0);
 
-            if (((int) (Time.time * 4)) % 2 == 0)
-            {
-                GetComponent<SpriteRenderer>().enabled = false;
-            }
-            else
-            {
-                GetComponent<SpriteRenderer>().enabled = true;
-            }
+            
 
             if (Time.time - deathTime < 2)
             {
@@ -111,6 +105,14 @@ public class PlayerControlBeta : MonoBehaviour
             else
             {
                 UISlot.text = "P" + playerNum + " lives: " + lives;
+                if (((int)(Time.time * 4)) % 2 == 0)
+                {
+                    GetComponent<SpriteRenderer>().enabled = false;
+                }
+                else
+                {
+                    GetComponent<SpriteRenderer>().enabled = true;
+                }
             }
 
 
@@ -324,11 +326,14 @@ public class PlayerControlBeta : MonoBehaviour
     {
         lives--;
         deathTime = Time.time;
+        GetComponent<AudioSource>().clip = death;
+        GetComponent<AudioSource>().Play();
         if (lives > 0)
         {
             invincible = true;
             Invoke("removeInvincible", invincibleTime);
             UISlot.text = "P" + playerNum + " lives: " + lives;
+            GetComponent<SpriteRenderer>().enabled = false;
         }
         else
         {

@@ -921,6 +921,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cf990d3c724c0b7489656cbfe8b57d12, type: 3}
   - {fileID: 8300000, guid: 8d75b9f64a3db4e4b8d49b745d5486a8, type: 3}
   - {fileID: 8300000, guid: ee2895a7e9e2ebb4db9f58bd9d9bab38, type: 3}
+  death: {fileID: 8300000, guid: 680be8690bc944747b1526bf311edd8f, type: 3}
 --- !u!50 &798664572
 Rigidbody2D:
   serializedVersion: 4
@@ -1687,6 +1688,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cf990d3c724c0b7489656cbfe8b57d12, type: 3}
   - {fileID: 8300000, guid: 8d75b9f64a3db4e4b8d49b745d5486a8, type: 3}
   - {fileID: 8300000, guid: ee2895a7e9e2ebb4db9f58bd9d9bab38, type: 3}
+  death: {fileID: 8300000, guid: 680be8690bc944747b1526bf311edd8f, type: 3}
 --- !u!1 &1402188249
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,6 +2039,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cf990d3c724c0b7489656cbfe8b57d12, type: 3}
   - {fileID: 8300000, guid: 8d75b9f64a3db4e4b8d49b745d5486a8, type: 3}
   - {fileID: 8300000, guid: ee2895a7e9e2ebb4db9f58bd9d9bab38, type: 3}
+  death: {fileID: 8300000, guid: 680be8690bc944747b1526bf311edd8f, type: 3}
 --- !u!50 &1492830572
 Rigidbody2D:
   serializedVersion: 4
@@ -2981,6 +2984,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cf990d3c724c0b7489656cbfe8b57d12, type: 3}
   - {fileID: 8300000, guid: 8d75b9f64a3db4e4b8d49b745d5486a8, type: 3}
   - {fileID: 8300000, guid: ee2895a7e9e2ebb4db9f58bd9d9bab38, type: 3}
+  death: {fileID: 8300000, guid: 680be8690bc944747b1526bf311edd8f, type: 3}
 --- !u!50 &2018403795
 Rigidbody2D:
   serializedVersion: 4
