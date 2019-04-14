@@ -563,3 +563,7 @@ C:\Users\Woodm\Documents\GitHub\Flip Flop\Flip-Flop-Master\Flip Flop\obj\Debug\A
 C:\Users\Woodm\Documents\GitHub\Flip Flop\Flip-Flop-Master\Flip Flop\obj\Debug\Assembly-CSharp.dll
 C:\Users\Woodm\Documents\GitHub\Flip Flop\Flip-Flop-Master\Flip Flop\obj\Debug\Assembly-CSharp.pdb
 C:\Users\Woodm\Documents\GitHub\Flip Flop\Flip-Flop-Master\Flip Flop\Temp\bin\Debug\XInputDotNetPure.dll
+C:\Users\Woodm\Documents\GitHub\Flip Flop\Flip-Flop-Master\Flip Flop\Temp\bin\Debug\Unity.Postprocessing.Editor.dll
+C:\Users\Woodm\Documents\GitHub\Flip Flop\Flip-Flop-Master\Flip Flop\Temp\bin\Debug\Unity.Postprocessing.Runtime.dll
+C:\Users\Woodm\Documents\GitHub\Flip Flop\Flip-Flop-Master\Flip Flop\Temp\bin\Debug\Unity.Postprocessing.Editor.pdb
+C:\Users\Woodm\Documents\GitHub\Flip Flop\Flip-Flop-Master\Flip Flop\Temp\bin\Debug\Unity.Postprocessing.Runtime.pdb

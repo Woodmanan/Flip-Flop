@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Tilemaps;
+using UnityEngine.Rendering.PostProcessing;
 
 public class WeirdStuff : MonoBehaviour
 {
@@ -26,12 +27,17 @@ public class WeirdStuff : MonoBehaviour
     [SerializeField]
     PhysicsMaterial2D bounceMaterial;
 
+    private PostProcessVolume effect;
+    private ChromaticAberration AbLayer = null;
+
     // Start is called before the first frame update
     void Start()
     {
         currentTime = Time.time;
         changeText = "If you're seeing this, there's a bug.";
         pickNext();
+        effect = GetComponent<PostProcessVolume>();
+        effect.profile.TryGetSettings(out AbLayer);
     }
 
     // Update is called once per frame
@@ -103,12 +109,13 @@ public class WeirdStuff : MonoBehaviour
             int swapNum = Random.Range(0, GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControlBeta>().getNumSwaps());
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
             {
-                changeText = go.GetComponent<PlayerControlBeta>().swapByInt(swapNum);
+                int choiceTwo = Random.Range(1, 3);
+                changeText = go.GetComponent<PlayerControlBeta>().swapByInt(swapNum, choiceTwo);
             }
         }
         else if (choice == 2)
         {
-            secondChoice = Random.Range(0, 4);
+            secondChoice = Random.Range(0, 3);
             switch (secondChoice)
             {
                 case 0:
@@ -133,6 +140,20 @@ public class WeirdStuff : MonoBehaviour
                     changeText = "MOOOOOON";
                     break;
                 case 2:
+                    changeText = "Slippery Controls!";
+                    foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+                    {
+                        go.GetComponent<PlayerControlBeta>().modSlide(15);
+                    }
+                    break;
+            }
+        }
+        else if (choice == 3)
+        {
+            secondChoice = Random.Range(0, 3);
+            switch (secondChoice)
+            {
+                case 0:
                     changeText = "Surprise!";
                     Color[] toSwitch = getRandomColors();
                     int count = 0;
@@ -142,11 +163,18 @@ public class WeirdStuff : MonoBehaviour
                         count++;
                     }
                     break;
-                case 3:
-                    changeText = "Slippery Controls!";
-                    foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+                case 1:
+                    changeText = "BBLLUURR";
+                    AbLayer.intensity.value = 1f;
+                    break;
+                case 2:
+                    changeText = "Bad Rendering!";
+                    GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
+                    cam.GetComponent<Camera>().clearFlags = CameraClearFlags.Nothing;
+                    if (Random.Range(0, 2) == 0)
                     {
-                        go.GetComponent<PlayerControlBeta>().modSlide(15);
+                        AbLayer.intensity.value = 1f;
+                        changeText = "Literally Tripping Balls";
                     }
                     break;
             }
@@ -156,7 +184,7 @@ public class WeirdStuff : MonoBehaviour
 
     void pickNext()
     {
-        nextChange = Random.Range(0, 3);
+        nextChange = Random.Range(0, 4);
         switch (nextChange)
         {
             case 0:
@@ -167,6 +195,9 @@ public class WeirdStuff : MonoBehaviour
                 break;
             case 2:
                 nextName = "Physics";
+                break;
+            case 3:
+                nextName = "Miscellaneous";
                 break;
         }
     }

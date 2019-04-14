@@ -184,7 +184,10 @@ public class PlayerControlBeta : MonoBehaviour
         if (getSterilizedInput(jump) == 0 && jumping)
         {
             //rigid.velocity = new Vector2(rigid.velocity.x, 0);
-            rigid.AddForce(new Vector2(0, -100));
+            if (rigid.velocity.y > -.2)
+            {
+                rigid.AddForce(new Vector2(0, -100));
+            }
             jumping = false;
         }
 
@@ -270,7 +273,7 @@ public class PlayerControlBeta : MonoBehaviour
     //WHEN UPDATING: MAKE SURE TO UPDATE getNumSwaps()!
 
     //Swaps controls numTimes
-    public string swapByInt(int choice)
+    public string swapByInt(int choice, int turn)
     {
         print(this.gameObject.name + " is being switched with num " + choice);
         char holder;
@@ -298,7 +301,7 @@ public class PlayerControlBeta : MonoBehaviour
                 jump = holder;
                 return "Right and Jump swapped.";
             case 3:
-                int rotation = Random.Range(1, 3);
+                int rotation = turn;
                 RotateLeft(rotation);
                 if (rotation == 1)
                 {
