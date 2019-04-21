@@ -29,6 +29,8 @@ public class WeirdStuff : MonoBehaviour
 
     private PostProcessVolume effect;
     private ChromaticAberration AbLayer = null;
+    private Grain grainLayer = null;
+    private LensDistortion lensLayer = null;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +40,8 @@ public class WeirdStuff : MonoBehaviour
         pickNext();
         effect = GetComponent<PostProcessVolume>();
         effect.profile.TryGetSettings(out AbLayer);
+        effect.profile.TryGetSettings(out grainLayer);
+        effect.profile.TryGetSettings(out lensLayer);
     }
 
     // Update is called once per frame
@@ -107,9 +111,9 @@ public class WeirdStuff : MonoBehaviour
         else if (choice == 1)
         {
             int swapNum = Random.Range(0, GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControlBeta>().getNumSwaps());
+            int choiceTwo = Random.Range(1, 3);
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
             {
-                int choiceTwo = Random.Range(1, 3);
                 changeText = go.GetComponent<PlayerControlBeta>().swapByInt(swapNum, choiceTwo);
             }
         }
@@ -143,14 +147,14 @@ public class WeirdStuff : MonoBehaviour
                     changeText = "Slippery Controls!";
                     foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
                     {
-                        go.GetComponent<PlayerControlBeta>().modSlide(15);
+                        go.GetComponent<PlayerControlBeta>().modSlide(20);
                     }
                     break;
             }
         }
         else if (choice == 3)
         {
-            secondChoice = Random.Range(0, 3);
+            secondChoice = Random.Range(0, 4);
             switch (secondChoice)
             {
                 case 0:
@@ -177,6 +181,11 @@ public class WeirdStuff : MonoBehaviour
                         changeText = "Literally Tripping Balls";
                     }
                     break;
+                case 3:
+                    changeText = "Old School!";
+                    grainLayer.intensity.value = .5f;
+                    lensLayer.intensity.value = 80;
+                    break;
             }
         }
         pickNext();
@@ -184,7 +193,23 @@ public class WeirdStuff : MonoBehaviour
 
     void pickNext()
     {
-        nextChange = Random.Range(0, 4);
+        nextChange = Random.Range(0, 20);
+        if (nextChange < 5)
+        {
+            nextChange = 0;
+        }
+        else if (nextChange < 7)
+        {
+            nextChange = 1;
+        }
+        else if (nextChange < 14)
+        {
+            nextChange = 2;
+        }
+        else
+        {
+            nextChange = 3;
+        }
         switch (nextChange)
         {
             case 0:

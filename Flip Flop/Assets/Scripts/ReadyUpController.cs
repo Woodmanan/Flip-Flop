@@ -30,7 +30,7 @@ public class ReadyUpController : MonoBehaviour {
 	void Update ()
     {
         inp = GamePad.GetState(ControllerNum);
-		if(inp.Buttons.Start == ButtonState.Pressed || Input.GetAxis("Vertical") > 0 && !ready && !readyCoolDown)
+		if(inp.Buttons.Start == ButtonState.Pressed && !ready && !readyCoolDown)
         {
             ready = true;
             Invoke("removeReadyCoolDown", .4f);

@@ -511,12 +511,13 @@ AudioSource:
   m_GameObject: {fileID: 269858592}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8f60b57e601cb094c81ddd82eeb01ae8, type: 3}
+  OutputAudioMixerGroup: {fileID: 243426092026318044, guid: 5c4ee5a0404b0de43bda2f8aa5cf16cc,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: d9a3f09cd172bbb4a8d2f75c42de345d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -991,12 +992,11 @@ MonoBehaviour:
   invincibleTime: 5
   UISlot: {fileID: 802950332}
   noises:
-  - {fileID: 8300000, guid: 82c8d5dc9899a074b8d11af785ac7596, type: 3}
+  - {fileID: 8300000, guid: ee2895a7e9e2ebb4db9f58bd9d9bab38, type: 3}
   - {fileID: 8300000, guid: d8a657874203f814f902f4472c67b56d, type: 3}
   - {fileID: 8300000, guid: f606a13605e2cd54ca395566c3eb0d7c, type: 3}
   - {fileID: 8300000, guid: cf990d3c724c0b7489656cbfe8b57d12, type: 3}
   - {fileID: 8300000, guid: 8d75b9f64a3db4e4b8d49b745d5486a8, type: 3}
-  - {fileID: 8300000, guid: ee2895a7e9e2ebb4db9f58bd9d9bab38, type: 3}
   death: {fileID: 8300000, guid: 680be8690bc944747b1526bf311edd8f, type: 3}
 --- !u!50 &798664572
 Rigidbody2D:
@@ -1126,10 +1126,11 @@ AudioSource:
   m_GameObject: {fileID: 798664570}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 5c4ee5a0404b0de43bda2f8aa5cf16cc,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1529,10 +1530,11 @@ AudioSource:
   m_GameObject: {fileID: 1249925398}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 5c4ee5a0404b0de43bda2f8aa5cf16cc,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1758,12 +1760,11 @@ MonoBehaviour:
   invincibleTime: 5
   UISlot: {fileID: 562924238}
   noises:
-  - {fileID: 8300000, guid: 82c8d5dc9899a074b8d11af785ac7596, type: 3}
+  - {fileID: 8300000, guid: ee2895a7e9e2ebb4db9f58bd9d9bab38, type: 3}
   - {fileID: 8300000, guid: d8a657874203f814f902f4472c67b56d, type: 3}
   - {fileID: 8300000, guid: f606a13605e2cd54ca395566c3eb0d7c, type: 3}
   - {fileID: 8300000, guid: cf990d3c724c0b7489656cbfe8b57d12, type: 3}
   - {fileID: 8300000, guid: 8d75b9f64a3db4e4b8d49b745d5486a8, type: 3}
-  - {fileID: 8300000, guid: ee2895a7e9e2ebb4db9f58bd9d9bab38, type: 3}
   death: {fileID: 8300000, guid: 680be8690bc944747b1526bf311edd8f, type: 3}
 --- !u!1 &1402188249
 GameObject:
@@ -2109,12 +2110,11 @@ MonoBehaviour:
   invincibleTime: 5
   UISlot: {fileID: 1476138306}
   noises:
-  - {fileID: 8300000, guid: 82c8d5dc9899a074b8d11af785ac7596, type: 3}
+  - {fileID: 8300000, guid: ee2895a7e9e2ebb4db9f58bd9d9bab38, type: 3}
   - {fileID: 8300000, guid: d8a657874203f814f902f4472c67b56d, type: 3}
   - {fileID: 8300000, guid: f606a13605e2cd54ca395566c3eb0d7c, type: 3}
   - {fileID: 8300000, guid: cf990d3c724c0b7489656cbfe8b57d12, type: 3}
   - {fileID: 8300000, guid: 8d75b9f64a3db4e4b8d49b745d5486a8, type: 3}
-  - {fileID: 8300000, guid: ee2895a7e9e2ebb4db9f58bd9d9bab38, type: 3}
   death: {fileID: 8300000, guid: 680be8690bc944747b1526bf311edd8f, type: 3}
 --- !u!50 &1492830572
 Rigidbody2D:
@@ -2244,10 +2244,11 @@ AudioSource:
   m_GameObject: {fileID: 1492830570}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 5c4ee5a0404b0de43bda2f8aa5cf16cc,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3072,12 +3073,11 @@ MonoBehaviour:
   invincibleTime: 5
   UISlot: {fileID: 1781932074}
   noises:
-  - {fileID: 8300000, guid: 82c8d5dc9899a074b8d11af785ac7596, type: 3}
+  - {fileID: 8300000, guid: ee2895a7e9e2ebb4db9f58bd9d9bab38, type: 3}
   - {fileID: 8300000, guid: d8a657874203f814f902f4472c67b56d, type: 3}
   - {fileID: 8300000, guid: f606a13605e2cd54ca395566c3eb0d7c, type: 3}
   - {fileID: 8300000, guid: cf990d3c724c0b7489656cbfe8b57d12, type: 3}
   - {fileID: 8300000, guid: 8d75b9f64a3db4e4b8d49b745d5486a8, type: 3}
-  - {fileID: 8300000, guid: ee2895a7e9e2ebb4db9f58bd9d9bab38, type: 3}
   death: {fileID: 8300000, guid: 680be8690bc944747b1526bf311edd8f, type: 3}
 --- !u!50 &2018403795
 Rigidbody2D:
@@ -3207,10 +3207,11 @@ AudioSource:
   m_GameObject: {fileID: 2018403793}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 5c4ee5a0404b0de43bda2f8aa5cf16cc,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

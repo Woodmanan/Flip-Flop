@@ -170,8 +170,9 @@ public class PlayerControlBeta : MonoBehaviour
 
 
 
-        if (getSterilizedInput(jump) > 0 && onGround && !jumpCooldown)
+        if (getSterilizedInput(jump) > 0 && !jumpCooldown && canJump())
         {
+            rigid.velocity = new Vector2(rigid.velocity.x, 0);
             rigid.AddForce(new Vector2(0, jumpForce));
             jumpCooldown = true;
             Invoke("removeJumpCooldown", jumpCooldownTime);
@@ -397,5 +398,18 @@ public class PlayerControlBeta : MonoBehaviour
     public bool respawing()
     {
         return invincible;
+    }
+
+    private bool canJump()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, .45f, LayerMask.GetMask("Default"));
+        if (hit.collider == null || !hit.collider.tag.Equals("Ground"))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 }
