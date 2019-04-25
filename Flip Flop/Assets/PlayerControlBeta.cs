@@ -50,6 +50,8 @@ public class PlayerControlBeta : MonoBehaviour
     [SerializeField] private AudioClip[] noises;
     [SerializeField] private AudioClip death;
 
+    private bool cancelsVelocity;
+
     private bool onGround, jumpCooldown;
     private float deathTime;
 
@@ -79,6 +81,8 @@ public class PlayerControlBeta : MonoBehaviour
         UISlot.text = "P" + playerNum + " lives: " + lives;
         UISlot.color = GetComponent<SpriteRenderer>().color;
         rigid = GetComponent<Rigidbody2D>();
+
+        cancelsVelocity = true;
 
 #if UNITY_EDITOR
         print("Editor Controls Enabled");
@@ -172,8 +176,17 @@ public class PlayerControlBeta : MonoBehaviour
 
         if (getSterilizedInput(jump) > 0 && !jumpCooldown && canJump())
         {
-            rigid.velocity = new Vector2(rigid.velocity.x, 0);
-            rigid.AddForce(new Vector2(0, jumpForce));
+            if (cancelsVelocity)
+            {
+                rigid.velocity = new Vector2(rigid.velocity.x, 0);
+                rigid.AddForce(new Vector2(0, jumpForce));
+            }
+            else
+            {
+                //Bouncing jumps. Oof.
+                rigid.velocity += new Vector2(0, rigid.velocity.y).normalized * 4;
+            }
+            
             jumpCooldown = true;
             Invoke("removeJumpCooldown", jumpCooldownTime);
             jumping = true;
@@ -411,5 +424,10 @@ public class PlayerControlBeta : MonoBehaviour
         {
             return true;
         }
+    }
+
+    public void velocityCancel(bool b)
+    {
+        cancelsVelocity = b;
     }
 }

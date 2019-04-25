@@ -61,9 +61,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\ColorShifter.cs" />
+    <Compile Include="Assets\ColorShiftSubtle.cs" />
     <Compile Include="Assets\DisableMe.cs" />
     <Compile Include="Assets\ExitScript.cs" />
+    <Compile Include="Assets\FadeIn.cs" />
     <Compile Include="Assets\MapGenerator.cs" />
+    <Compile Include="Assets\MoveAround.cs" />
+    <Compile Include="Assets\MoveUp.cs" />
+    <Compile Include="Assets\MusicSelector.cs" />
     <Compile Include="Assets\PlayerControlBeta.cs" />
     <Compile Include="Assets\Rotator.cs" />
     <Compile Include="Assets\Sample UI\Scripts\ActiveStateToggler.cs" />
@@ -91,6 +96,7 @@
     <Compile Include="Assets\Scripts\WeirdStuff.cs" />
     <Compile Include="Assets\SetVolume.cs" />
     <Compile Include="Assets\StartupScript.cs" />
+    <Compile Include="Assets\StopMovingMyShit.cs" />
     <Compile Include="Assets\XInputDotNet\Examples\XInputTestCS.cs" />
     <None Include="Assets\XInputDotNet\Docs.txt" />
     <None Include="Assets\XInputDotNet\MITLicense.txt" />

@@ -80,6 +80,8 @@ public class WeirdStuff : MonoBehaviour
     //If you aren't seeing your change be implemented, it's probable that the random.range needs to be updated!
     private void doRandomChange()
     {
+        GetComponent<AudioSource>().enabled = false;
+        GetComponent<AudioSource>().enabled = true;
         dispChange = true;
         Invoke("returnToTimer", 4.0f);
         //Gets random choice between 0 (inclusive) and x (exclusive)
@@ -126,6 +128,10 @@ public class WeirdStuff : MonoBehaviour
                     GameObject tiles = GameObject.FindGameObjectWithTag("Ground");
                     tiles.GetComponent<TilemapCollider2D>().sharedMaterial = bounceMaterial;
                     changeText = "Rubber tiles! All obstacles are now bouncy";
+                    foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
+                    {
+                        go.GetComponent<PlayerControlBeta>().velocityCancel(false);
+                    }
                     if (Random.Range(0, 2) == 0)
                     {
                         changeText = "Heavy slime! Bouncy tiles + Gravity up";

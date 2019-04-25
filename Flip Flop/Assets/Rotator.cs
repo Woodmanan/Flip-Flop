@@ -17,7 +17,7 @@ public class Rotator : MonoBehaviour
     {
         if (mod > 0)
         {
-            if (rot < 90)
+            if (rot < 45)
             {
                 rot += mod;
             }
@@ -28,7 +28,7 @@ public class Rotator : MonoBehaviour
         }
         else
         {
-            if (rot > -90)
+            if (rot > -45)
             {
                 rot += mod;
             }
@@ -39,5 +39,7 @@ public class Rotator : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Euler(0, 0, rot);
+        //float size = Mathf.PingPong(Time.time, 4f)/8 + .5f;
+        //transform.localScale = new Vector3(size, size, size);
     }
 }

@@ -28,7 +28,20 @@ public class ExitScript : MonoBehaviour
         }
         else if (Input.GetAxis("Quit") > 0 && waiting)
         {
-            tex.color = new Color(tex.color.r, tex.color.g, tex.color.b, (Time.time - start) * 100 / 3);
+            tex.color = new Color(tex.color.r, tex.color.g, tex.color.b, (Time.time - start) / 3);
+            if (Time.time - start > 2)
+            {
+                tex.text = "Exiting...";
+            }
+            else if (Time.time - start > 1)
+            {
+                tex.text = "Exiting..";
+            }
+            else
+            {
+                tex.text = "Exiting.";
+            }
+
             if (Time.time - start > 3)
             {
                 SceneManager.LoadScene(0);

@@ -26,7 +26,7 @@ public class MapGenerator : MonoBehaviour
 
         while (x < 600)
         {
-            int choice = Random.Range(0, 7);
+            int choice = Random.Range(0, 10);
             if (choice < 5)
             {
                 x = makePlain(x, y, Random.Range(3, 6));
@@ -36,7 +36,7 @@ public class MapGenerator : MonoBehaviour
                 {
                     y = 2;
                 }
-                if (y < -4)
+                else if (y < -4)
                 {
                     y = -4;
                 }
@@ -46,7 +46,7 @@ public class MapGenerator : MonoBehaviour
                 for (int i = 0; i < 7; i++)
                 {
                     x = makePlain(x, y, 2);
-                    x += Random.Range(2, 4) ;
+                    x += Random.Range(2, 4);
                 }
             }
             else if (choice == 6)
@@ -73,37 +73,74 @@ public class MapGenerator : MonoBehaviour
             }
             else if (choice == 7)
             {
-                //Make a box
-                /*   #########
-                 *   #
-                 *   #       #
-                 *   ####    #
-                 *           #
-                 *   #########
+                // SSSSS
+                /*         #########
+                 *        ##                 
+                 * ######    
+                 * ############
                  * 
                  */
-
-                y = -3;
+                if (y > 2)
+                {
+                    y = 1;
+                }
+                makePlain(x, y, 4);
+                makePlain(x, y - 1, 8);
+                x = x + 6;
+                y++;
+                makePlain(x, y, 2);
+                x = x + 1;
+                y++;
                 x = makePlain(x, y, 5);
-
-                for (int i = -3; i < 3; i++)
-                {
-                    makePlain(x, i, 9);
-                }
-                for (int i = x; i < x + 8; i++)
-                {
-                    map.SetTile(new Vector3Int(i, y + 1, 0), null);
-                }
-
-                
             }
+
+            else if (choice == 8)
+            {
+                while (y < 0)
+                {
+                    x = makePlain(x, y, 2);
+                    x--;
+                    y++;
+                }
+
+                x += 2;
+                // ;)
+                y = -2;
+
+                makePlain(x + 4, 2, 2);
+
+                makePlain(x + 11, 2, 2);
+
+                x = makePlain(x, y, 2);
+                x = makePlain(x, y-1, 2);
+                x = makePlain(x, y-2, 5);
+                x = makePlain(x, y-1, 2);
+                x = makePlain(x, y, 2);
+            }
+
+            else if (choice == 9)
+            {
+                /*     ##   ##
+                 * #####     ######
+                 */
+                makePlain(x, y, 3);
+                x += 2;
+                y++;
+                makePlain(x, y, 2);
+                x += 5;
+                makePlain(x, y, 2);
+                y--;
+                x++;
+                x = makePlain(x, y, 4);
+            }
+
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private int makePlain(int x, int y, int length)
