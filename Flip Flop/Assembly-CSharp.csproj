@@ -63,8 +63,10 @@
     <Compile Include="Assets\ColorShifter.cs" />
     <Compile Include="Assets\ColorShiftSubtle.cs" />
     <Compile Include="Assets\DisableMe.cs" />
+    <Compile Include="Assets\EndSetup.cs" />
     <Compile Include="Assets\ExitScript.cs" />
     <Compile Include="Assets\FadeIn.cs" />
+    <Compile Include="Assets\Incrementer.cs" />
     <Compile Include="Assets\MapGenerator.cs" />
     <Compile Include="Assets\MoveAround.cs" />
     <Compile Include="Assets\MoveUp.cs" />

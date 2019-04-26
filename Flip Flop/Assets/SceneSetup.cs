@@ -12,11 +12,12 @@ public class SceneSetup : MonoBehaviour
     [SerializeField]
     private int maxScene;
 
-    [SerializeField]
-    private int gamesToWin;
+    public int gamesToWin;
 
     private GameObject panel;
     private Text UISlot;
+
+    private int finalWinner;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,10 @@ public class SceneSetup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            Destroy(this.gameObject);
+        }
         if (Input.GetAxis("Start1") > 0 && Input.GetAxis("Start2") > 0 || Input.GetAxis("Start1") > 0 )
         {
             if (SceneManager.GetActiveScene().buildIndex == 1)
@@ -77,6 +82,7 @@ public class SceneSetup : MonoBehaviour
             if (score[player] == gamesToWin)
             {
                 print((player++) + " wins!");
+                finalWinner = player++;
                 moveToEnd();
             }
         }
@@ -123,12 +129,12 @@ public class SceneSetup : MonoBehaviour
 
     public void moveToNew()
     {
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(2);
     }
 
     public void moveToEnd()
     {
-        int finalScene = 1;
+        int finalScene = 3;
         SceneManager.LoadScene(finalScene);
     }
 
@@ -145,5 +151,27 @@ public class SceneSetup : MonoBehaviour
     public bool[] getPlayerStates()
     {
         return playersOn;
+    }
+
+    public int getWinner()
+    {
+        return finalWinner;
+    }
+
+    public string dump()
+    {
+        string textDump = "";
+        for (int i= 0; i < 4; i++)
+        {
+            if (playersOn[i])
+            {
+                /*
+                var pScore = Instantiate(UISlot);
+                pScore.transform.SetParent(levelOverPanel.transform);
+                */
+                textDump += "Player " + (i + 1) + " score: " + score[i] + "\n\n";
+            }
+        }
+        return textDump;
     }
 }
