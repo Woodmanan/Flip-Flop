@@ -26,7 +26,23 @@ public class MapGenerator : MonoBehaviour
 
         while (x < 600)
         {
-            int choice = Random.Range(0, 10);
+            if (y < -3)
+            {
+                y = -3;
+            }
+            else if (y > 2)
+            {
+                y = 1;
+            }
+            else if (y < -1)
+            {
+                y++;
+            }
+            else if (y > -1)
+            {
+                y--;
+            }
+            int choice = Random.Range(0, 20);
             if (choice < 5)
             {
                 x = makePlain(x, y, Random.Range(3, 6));
@@ -132,6 +148,152 @@ public class MapGenerator : MonoBehaviour
                 y--;
                 x++;
                 x = makePlain(x, y, 4);
+            }
+            else if (choice == 10)
+            {
+                /*      #    #     
+                 * ## ##  #    #
+                 */
+                
+                makePlain(x, y, 2);
+                x += 4;
+
+                makePlain(x, y, 2);
+                y++;
+                x += 4;
+                makePlain(x, y, 2);
+                y--;
+                x += 5;
+                makePlain(x, y, 2);
+                y++;
+                x += 5;
+                makePlain(x, y, 2);
+                y--;
+                x += 4;
+                makePlain(x, y, 2);
+            }
+
+            else if (choice == 11)
+            {
+                /*  #   #  
+                 * ##   ##
+                 */
+                
+                makePlain(x, y, 2);
+                x += 1;
+                y++;
+                makePlain(x, y, 1);
+                x += 3;
+                makePlain(x, y, 1);
+                y--;
+                x++;
+                makePlain(x, y, 2);
+            }
+            else if (choice == 12)
+            {
+                /*     ##   ##
+                *
+                 *  ##    #   ##
+                 */
+
+
+                
+                x = makePlain(x, y, 3);
+                
+                y += 2;
+                x = makePlain(x, y, 2);
+                y -= 2;
+                x = makePlain(x, y, 2);
+                y += 2;
+                x = makePlain(x, y, 2);
+                y -= 2;
+                x = makePlain(x, y, 3);
+            }
+
+            else if (choice == 13)
+            {
+                // -_-
+                x = makePlain(x, y, 5);
+                y--;
+                x++;
+                x = makePlain(x, y, 2);
+                x++;
+                y++;
+                x = makePlain(x, y, 5);
+            }
+            else if (choice == 14)
+            {
+                // _-__-__-__-__
+                for (int i = 0; i < 6; i++)
+                {
+                    makePlain(x, y, 3);
+                    x = x + 2;
+                    x = makePlain(x, y + 1, 1);
+                }
+            }
+            else if (choice == 15)
+            {
+                // ___ ---
+                x = makePlain(x, y, 3);
+                x++;
+                y++;
+                x = makePlain(x, y, 3);
+            }
+            else if (choice == 16)
+            {
+                // --- ___
+                x = makePlain(x, y, 3);
+                x++;
+                y--;
+                x = makePlain(x, y, 3);
+            }
+            else if (choice == 17)
+            {
+                //       _---
+                //  ----
+                x++;
+                x = makePlain(x, y, 4);
+                y++;
+                x++;
+                x = makePlain(x, y, 1);
+                y++;
+                x = makePlain(x, y, 3);
+            }
+            else if (choice == 18)
+            {
+                //       _---   but like opposite
+                //  ----
+                x++;
+                x = makePlain(x, y, 4);
+                y--;
+                x++;
+                x = makePlain(x, y, 1);
+                y--;
+                x = makePlain(x, y, 3);
+            }
+            else if (choice == 19)
+            {
+                // Hi
+                x++;
+                makePlain(x, y + 1, 1);
+                makePlain(x + 3, y + 1, 1);
+                for (int i = y; i > y - 3; i--)
+                {
+                    makePlain(x, i, 1);
+                    makePlain(x + 3, i, 1);
+                }
+                x = makePlain(x, y, 4);
+                x++;
+                for (int i = y + 1; i > y - 3; i--)
+                {
+                    if (i != y)
+                    {
+                        makePlain(x, i, 1);
+                    }
+                }
+                x++;
+                x++;
+                x++;
             }
 
         }

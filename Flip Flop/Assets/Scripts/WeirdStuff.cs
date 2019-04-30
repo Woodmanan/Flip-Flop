@@ -17,6 +17,7 @@ public class WeirdStuff : MonoBehaviour
 
     [SerializeField]
     Text updateField;
+    [SerializeField] GameObject DARKNESSSSS;
     private bool dispChange;
     private string changeText;
 
@@ -121,7 +122,7 @@ public class WeirdStuff : MonoBehaviour
         }
         else if (choice == 2)
         {
-            secondChoice = Random.Range(0, 3);
+            secondChoice = Random.Range(0, 4);
             switch (secondChoice)
             {
                 case 0:
@@ -134,7 +135,7 @@ public class WeirdStuff : MonoBehaviour
                     }
                     if (Random.Range(0, 2) == 0)
                     {
-                        changeText = "Heavy slime! Bouncy tiles + Gravity up";
+                        changeText = "Heavy slime!";
                         foreach (GameObject go in GameObject.FindGameObjectsWithTag("Player"))
                         {
                             go.GetComponent<PlayerControlBeta>().doubleGravity();
@@ -156,6 +157,10 @@ public class WeirdStuff : MonoBehaviour
                         go.GetComponent<PlayerControlBeta>().modSlide(20);
                     }
                     break;
+                case 3:
+                    changeText = "Speed up!";
+                    Time.timeScale = 2 * Time.timeScale;
+                    break;
             }
         }
         else if (choice == 3)
@@ -172,6 +177,8 @@ public class WeirdStuff : MonoBehaviour
                         go.GetComponent<PlayerControlBeta>().setColor(toSwitch[count]);
                         count++;
                     }
+                    DARKNESSSSS.SetActive(true);
+                    Invoke("enableCamera", .2f);
                     break;
                 case 1:
                     changeText = "BBLLUURR";
@@ -200,15 +207,15 @@ public class WeirdStuff : MonoBehaviour
     void pickNext()
     {
         nextChange = Random.Range(0, 20);
-        if (nextChange < 5)
+        if (nextChange < 6)
         {
             nextChange = 0;
         }
-        else if (nextChange < 7)
+        else if (nextChange < 10)
         {
             nextChange = 1;
         }
-        else if (nextChange < 14)
+        else if (nextChange < 15)
         {
             nextChange = 2;
         }
@@ -260,5 +267,10 @@ public class WeirdStuff : MonoBehaviour
     private void returnToTimer()
     {
         dispChange = false;
+    }
+
+    private void enableCamera()
+    {
+        DARKNESSSSS.SetActive(false);
     }
 }

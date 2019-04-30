@@ -60,17 +60,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BackgroundMimic.cs" />
     <Compile Include="Assets\ColorShifter.cs" />
     <Compile Include="Assets\ColorShiftSubtle.cs" />
     <Compile Include="Assets\DisableMe.cs" />
     <Compile Include="Assets\EndSetup.cs" />
     <Compile Include="Assets\ExitScript.cs" />
     <Compile Include="Assets\FadeIn.cs" />
+    <Compile Include="Assets\GoToStart.cs" />
     <Compile Include="Assets\Incrementer.cs" />
     <Compile Include="Assets\MapGenerator.cs" />
     <Compile Include="Assets\MoveAround.cs" />
     <Compile Include="Assets\MoveUp.cs" />
     <Compile Include="Assets\MusicSelector.cs" />
+    <Compile Include="Assets\PauseScript.cs" />
     <Compile Include="Assets\PlayerControlBeta.cs" />
     <Compile Include="Assets\Rotator.cs" />
     <Compile Include="Assets\Sample UI\Scripts\ActiveStateToggler.cs" />
@@ -85,6 +88,8 @@
     <Compile Include="Assets\Sample UI\Scripts\ShowSliderValue.cs" />
     <Compile Include="Assets\Sample UI\Scripts\TiltWindow.cs" />
     <Compile Include="Assets\SceneSetup.cs" />
+    <Compile Include="Assets\Scripts\Background_Maker.cs" />
+    <Compile Include="Assets\Scripts\Background_Movement.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\LoadSceneOnClick.cs" />
@@ -99,6 +104,7 @@
     <Compile Include="Assets\SetVolume.cs" />
     <Compile Include="Assets\StartupScript.cs" />
     <Compile Include="Assets\StopMovingMyShit.cs" />
+    <Compile Include="Assets\TimeFix.cs" />
     <Compile Include="Assets\XInputDotNet\Examples\XInputTestCS.cs" />
     <None Include="Assets\XInputDotNet\Docs.txt" />
     <None Include="Assets\XInputDotNet\MITLicense.txt" />

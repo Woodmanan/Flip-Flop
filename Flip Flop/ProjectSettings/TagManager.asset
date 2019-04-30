@@ -9,6 +9,7 @@ TagManager:
   - MainManager
   - GOPanel
   - GOTag
+  - Dark
   layers:
   - Default
   - TransparentFX

@@ -97,8 +97,8 @@ public class PlayerControlBeta : MonoBehaviour
         if (invincible)
         {
             //Box collider Below?
-            GetComponent<CircleCollider2D>().enabled = false;
-            transform.position = GameObject.FindGameObjectWithTag("MainCamera").transform.position + new Vector3(0, 3, 10) + new Vector3(2.5f - getPlayerNum(), 0, 0);
+            GetComponent<BoxCollider2D>().enabled = false;
+            transform.position = GameObject.FindGameObjectWithTag("MainCamera").transform.position + new Vector3(0, 3.5f, 10) + new Vector3(2.5f - getPlayerNum(), 0, 0);
 
             //Reset the controller vibration after death. This was apparently an issue.
             if (Time.time - deathTime > .75)
@@ -108,11 +108,7 @@ public class PlayerControlBeta : MonoBehaviour
 
             if (Time.time - deathTime < 2)
             {
-                UISlot.text = "RT: " + (2 - (int) (Time.time - deathTime));
-            }
-            else
-            {
-                UISlot.text = "P" + playerNum + " lives: " + lives;
+                UISlot.text = "" + (2 - (int) (Time.time - deathTime));
                 if (((int)(Time.time * 4)) % 2 == 0)
                 {
                     GetComponent<SpriteRenderer>().enabled = false;
@@ -121,6 +117,11 @@ public class PlayerControlBeta : MonoBehaviour
                 {
                     GetComponent<SpriteRenderer>().enabled = true;
                 }
+            }
+            else
+            {
+                UISlot.text = "P" + playerNum + " lives: " + lives;
+                GetComponent<SpriteRenderer>().enabled = true;
             }
 
 
@@ -200,7 +201,8 @@ public class PlayerControlBeta : MonoBehaviour
             //rigid.velocity = new Vector2(rigid.velocity.x, 0);
             if (rigid.velocity.y > -.2)
             {
-                rigid.AddForce(new Vector2(0, -100));
+                rigid.velocity = new Vector2(rigid.velocity.x, rigid.velocity.y/2);
+                //rigid.AddForce(new Vector2(0, -200));
             }
             jumping = false;
         }
@@ -368,11 +370,12 @@ public class PlayerControlBeta : MonoBehaviour
 
     private void removeInvincible()
     {
-        invincible = false;
-        GetComponent<CircleCollider2D>().enabled = true;
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        GamePad.SetVibration(ControllerNum, 0, 0);
-        GetComponent<SpriteRenderer>().enabled = true;
+            invincible = false;
+            GetComponent<BoxCollider2D>().enabled = true;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            GamePad.SetVibration(ControllerNum, 0, 0);
+            GetComponent<SpriteRenderer>().enabled = true;
+        UISlot.text = "P" + playerNum + " lives: " + lives;
     }
 
     public int getPlayerNum()
@@ -415,7 +418,7 @@ public class PlayerControlBeta : MonoBehaviour
 
     private bool canJump()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, .45f, LayerMask.GetMask("Default"));
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, new Vector2(.64f, .1f), 0, Vector2.down, .45f, LayerMask.GetMask("Default"));
         if (hit.collider == null || !hit.collider.tag.Equals("Ground"))
         {
             return false;
