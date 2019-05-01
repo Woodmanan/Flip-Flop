@@ -38,7 +38,7 @@ public class SceneSetup : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        if (Input.GetAxis("Start1") > 0 && Input.GetAxis("Start2") > 0 || Input.GetAxis("Start1") > 0 )
+        if (Input.GetAxis("Start1") > 0 && Input.GetAxis("Start2") > 0)
         {
             if (SceneManager.GetActiveScene().buildIndex == 1)
             {

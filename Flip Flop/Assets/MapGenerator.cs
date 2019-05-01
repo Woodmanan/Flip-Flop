@@ -42,7 +42,7 @@ public class MapGenerator : MonoBehaviour
             {
                 y--;
             }
-            int choice = Random.Range(0, 20);
+            int choice = Random.Range(0, 24);
             if (choice < 5)
             {
                 x = makePlain(x, y, Random.Range(3, 6));
@@ -139,8 +139,8 @@ public class MapGenerator : MonoBehaviour
                 /*     ##   ##
                  * #####     ######
                  */
-                makePlain(x, y, 3);
-                x += 2;
+                makePlain(x, y, 4);
+                x += 3;
                 y++;
                 makePlain(x, y, 2);
                 x += 5;
@@ -170,7 +170,7 @@ public class MapGenerator : MonoBehaviour
                 makePlain(x, y, 2);
                 y--;
                 x += 4;
-                makePlain(x, y, 2);
+                x = makePlain(x, y, 2);
             }
 
             else if (choice == 11)
@@ -294,6 +294,69 @@ public class MapGenerator : MonoBehaviour
                 x++;
                 x++;
                 x++;
+            }
+            else if (choice == 20)
+            {
+                // =
+                x++;
+                makePlain(x, y - 1, 4);
+                x = makePlain(x, y + 1, 4);
+                x++;
+            }
+            // this one might be slightly sketch in practice
+            else if (choice == 21)
+            {
+                /*    ----
+                 * ----
+                 *    ----   (level w previous section)
+                 */
+                x++;
+
+                makePlain(x, y, 4); //Middle;
+                y = y + 2;
+                makePlain(x + 3, y, 4);
+                
+                
+                y = y - 4;
+                makePlain(x + 3, y, 4);
+                x = x + 8;
+            }
+            else if (choice == 22)
+            {
+                /*      ----
+                 * ----      -----   (level w previous section)
+                 *      ----
+                 */
+                x++;
+                x = makePlain(x, y, 4);
+                x++;
+                // ! not sure if 1 or 2 is better
+                makePlain(x, y + 1, 4);
+                x = makePlain(x, y - 1, 4);
+                x++;
+                x = makePlain(x, y, 4);
+                x++;
+            }
+            // note: this one might be p jank
+            else if (choice == 23)
+            {
+                /*   |    |
+                 * |   |    | 
+                 */
+                // 5 is arbitrary
+                int width = Random.Range(1, 3);
+                for (int i = 0; i < Random.Range(3, 8); i++)
+                {
+                    x = x + 2;
+                    if (i % 2 == 0) y--;
+                    else y++;
+                    for (int j = y; j > y - 6; j--)
+                    {
+                        makePlain(x, j, width);
+                    }
+                    x = x + 2;
+                }
+                x += 1;
             }
 
         }

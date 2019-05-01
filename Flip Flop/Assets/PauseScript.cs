@@ -22,7 +22,6 @@ public class PauseScript : MonoBehaviour
     {
         if (Input.GetAxis("Pause") != 0 && !cooldown)
         {
-            print("This is getting input.");
             cooldown = true;
             Invoke("removeCooldown", .3f);
             if (paused)

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using XInputDotNetPure; // Required in C#
 
 public class ReadyUpController : MonoBehaviour {
-
+    //So long, and thanks for all the fish!
     [SerializeField]
     private string playerNum;
     [SerializeField] private PlayerIndex ControllerNum;
@@ -39,7 +39,7 @@ public class ReadyUpController : MonoBehaviour {
 	void Update ()
     {
         inp = GamePad.GetState(ControllerNum);
-		if((inp.Buttons.Start == ButtonState.Pressed || Input.GetAxis("r") > 0) && !ready && !readyCoolDown)
+		if((inp.Buttons.Start == ButtonState.Pressed) && !ready && !readyCoolDown)
         {
             ready = true;
             Invoke("removeReadyCoolDown", .4f);
@@ -59,7 +59,7 @@ public class ReadyUpController : MonoBehaviour {
             print("Hey this worked");
             speed = ((Random.Range(0, 2) * -2) + 1) * speed;
         }
-        else if ((inp.Buttons.Start == ButtonState.Pressed || Input.GetAxis("r") > 0) && ready && !readyCoolDown)
+        else if ((inp.Buttons.Start == ButtonState.Pressed) && ready && !readyCoolDown)
         {
             ready = false;
             readyCoolDown = true;

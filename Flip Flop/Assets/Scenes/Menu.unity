@@ -2562,7 +2562,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 255.25, y: -156.5}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1102001473
 MonoBehaviour:
@@ -4918,7 +4918,7 @@ MonoBehaviour:
     Woody McCoy
 
 
-    Programmers
+    Programing
 
     Sebastian Yang
 
@@ -4927,9 +4927,9 @@ MonoBehaviour:
     Ryan Po
 
 
-    Sound Design
+    Sound and Music
 
-    Adrian Something blah blah
+    Adian Peck
 
     Jonathan Fischer
 
